@@ -1,8 +1,11 @@
 from datetime import datetime
+
+from django.conf import settings
 from django.views import View
 from django.shortcuts import render
 from .forms import InformatioinForm
 from django.http import JsonResponse
+from django.core.mail import send_mail
 
 
 def get_date_today():
@@ -13,15 +16,13 @@ def get_pacage_price():
         return [89900, 99900]
     elif ((get_date_today() > datetime(2025, 5, 5).date())
           and
-          (get_date_today() < datetime(2025, 5, 12).date())) :
+          (get_date_today() < datetime(2025, 5, 12).date())):
         return [99900, 109900]
     else:
         return 109900
 
 
-
 class IndexView(View):
-
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
@@ -32,31 +33,42 @@ class IndexView(View):
             'form': form,
             'price': get_pacage_price(),
         }
-        return render(request, self.template_name,  context)
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-            form = InformatioinForm(request.POST)
-            if form.is_valid():
-                print("form is valid")
-                data = {
-                    "price": get_pacage_price(),
-                    'status': 'success',
-                    'message': 'Formulário válido',
-                    'data': {
-                        'nome_completo': form.cleaned_data['full_name'],
-                        'email': form.cleaned_data['email'],
-                        'telefone': form.cleaned_data['phone'],
-                        'assunto': form.cleaned_data['objective'],
-                        'mensagem': form.cleaned_data['question_text'],
-                        'aceite': form.cleaned_data['accept']
-                    }
+        form = InformatioinForm(request.POST)
+        if form.is_valid():
+            data = {
+                "price": get_pacage_price(),
+                'status': 'success',
+                'message': 'Formulário válido',
+                'data': {
+                    'nome_completo': form.cleaned_data['full_name'],
+                    'email': form.cleaned_data['email'],
+                    'telefone': form.cleaned_data['phone'],
+                    'assunto': form.cleaned_data['objective'],
+                    'mensagem': form.cleaned_data['question_text'],
+                    'aceite': form.cleaned_data['accept']
                 }
-                return JsonResponse(data)
+            }
+            send_mail(
+                f"Dia da Mae. email de {form.cleaned_data['email']}",
+                f"""
+                De: {form.cleaned_data['email']}
+                Nome Completo: {form.cleaned_data['full_name']}
+                Telefone: {form.cleaned_data['phone']}
+                Object: {form.cleaned_data['objective']}
+                Mensagem: {form.cleaned_data['question_text']}
+                """,
+                settings.EMAIL_HOST_USER,
+                [settings.RECEPTION_EMAIL],
+                fail_silently=False,
+            )
+            return JsonResponse(data)
 
-            else:
-                return JsonResponse({
-                    'status': 'error',
-                    'message': "Form does not valide.",
-                    'errors': form.errors
-                }, status=400)
-
+        else:
+            return JsonResponse({
+                'status': 'error',
+                'message': "Form does not valide.",
+                'errors': form.errors
+            }, status=400)

@@ -6,6 +6,8 @@
     <title>{{ title }}</title>
 </head>
 <body>
+<h3>Actual Pacage Price: <span style="color: green">{{ price.0 }}</span>€</h3>
+<h3>Actual Pacage Price: <span style="color: red">{{ price.1 }}</span>€</h3>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

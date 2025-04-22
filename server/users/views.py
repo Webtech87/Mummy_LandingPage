@@ -1,18 +1,38 @@
+from datetime import datetime
 from django.views import View
 from django.shortcuts import render
 from .forms import InformatioinForm
 from django.http import JsonResponse
 
 
+def get_date_today():
+    return datetime.today().date()
+
+def get_pacage_price():
+    if get_date_today() < datetime(2025, 5, 6).date():
+        return [89900, 99900]
+    elif ((get_date_today() > datetime(2025, 5, 5).date())
+          and
+          (get_date_today() < datetime(2025, 5, 12).date())) :
+        return [99900, 109900]
+    else:
+        return 109900
+
+
+
 class IndexView(View):
+
+
 
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
+        get_date_today()
         form = InformatioinForm()
         context = {
             "title": "Index Users",
-            'form': form
+            'form': form,
+            'price': get_pacage_price(),
         }
         return render(request, self.template_name,  context)
 
@@ -21,6 +41,7 @@ class IndexView(View):
             if form.is_valid():
                 print("form is valid")
                 data = {
+                    "price": get_pacage_price(),
                     'status': 'success',
                     'message': 'Formulário válido',
                     'data': {

@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-22 15:40+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\users\forms.py:6
+msgid "Select"
+msgstr "Select"
+
+#: .\users\forms.py:7
+msgid "Amount/Payments"
+msgstr "Amount/Payments"
+
+#: .\users\forms.py:8
+msgid "Procedures"
+msgstr "Procedures"
+
+#: .\users\forms.py:9
+msgid "Questions"
+msgstr "Questions"
+
+#: .\users\forms.py:17
+msgid "Nome completo"
+msgstr "Full Name"
+
+#: .\users\forms.py:24
+msgid "Telefone"
+msgstr "Phone"
+
+#: .\users\forms.py:38
+msgid "Digite sua mensagem aqui"
+msgstr "Type your message here"
+
+#: .\users\templates\index.html:14
+msgid "Submit"
+msgstr "Submit"

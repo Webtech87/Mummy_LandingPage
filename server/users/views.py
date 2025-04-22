@@ -22,8 +22,6 @@ def get_pacage_price():
 
 class IndexView(View):
 
-
-
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):

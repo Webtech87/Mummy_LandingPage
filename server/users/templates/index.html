@@ -1,11 +1,26 @@
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
 <body>
+
+<div class="change_lang_container">
+    <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="en">
+        <button type="submit" style="background: none; border: none; cursor: pointer;">🇬🇧 GB</button>
+    </form>
+    <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="hidden" name="language" value="pt">
+        <button type="submit" style="background: none; border: none; cursor: pointer;">🇵🇹 PT</button>
+    </form>
+</div>
 <h3>Actual Pacage Price: <span style="color: green">{{ price.0 }}</span>€</h3>
 <h3>Actual Pacage Price: <span style="color: red">{{ price.1 }}</span>€</h3>
 <form method="post">

@@ -20,6 +20,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+LANGUAGES = [
+    ('pt', 'Português'),
+    ('en', 'English'),
+]
+
+LANGUAGE_CODE = 'pt'
+
+USE_I18N = True
+
+USE_L10N = True
+
 
 # Application definition
 
@@ -43,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.locale.LocaleMiddleware"
 ]
 
 ROOT_URLCONF = 'server.urls'

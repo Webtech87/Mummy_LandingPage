@@ -1,11 +1,24 @@
 from datetime import datetime
-
+import os
 from django.conf import settings
 from django.views import View
 from django.shortcuts import render
 from .forms import InformatioinForm
 from django.http import JsonResponse
 from django.core.mail import send_mail
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import json
+
+
+print("Verificando credenciais...")
+try:
+    with open(settings.CREDENTIALS_FILE) as f:
+        creds_json = json.load(f)
+        service_account_email = creds_json.get('client_email')
+        print(f"Email da conta de serviço: {service_account_email}")
+except Exception as e:
+    print(f"Erro ao ler credenciais: {str(e)}")
 
 
 def get_date_today():
@@ -21,6 +34,26 @@ def get_pacage_price():
     else:
         return 109900
 
+
+CREDENTIALS_FILE = settings.CREDENTIALS_FILE
+
+
+SCOPES = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive',
+]
+
+SAMPLE_SPREADSHEET_ID = os.environ.get('GOOGLE_SHEET_ID')
+
+print('++++++++++++++',SAMPLE_SPREADSHEET_ID)
+
+credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, SCOPES)
+
+client = gspread.authorize(credentials)
+
+google_sheet = client.open_by_key(SAMPLE_SPREADSHEET_ID)
+
+sheet = google_sheet.get_worksheet(0)
 
 class IndexView(View):
     template_name = 'index.html'
@@ -38,7 +71,7 @@ class IndexView(View):
     def post(self, request, *args, **kwargs):
         form = InformatioinForm(request.POST)
         if form.is_valid():
-            data = {
+            response_data = {
                 "price": get_pacage_price(),
                 'status': 'success',
                 'message': 'Formulário válido',
@@ -64,7 +97,16 @@ class IndexView(View):
                 [settings.RECEPTION_EMAIL],
                 fail_silently=False,
             )
-            return JsonResponse(data)
+            data = [
+                form.cleaned_data['full_name'],
+                form.cleaned_data['email'],
+                form.cleaned_data['phone'],
+                form.cleaned_data['objective'],
+                form.cleaned_data['question_text'],
+                form.cleaned_data['accept']
+            ]
+            sheet.append_row(data)
+            return JsonResponse(response_data)
 
         else:
             return JsonResponse({

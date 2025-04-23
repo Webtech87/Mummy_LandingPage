@@ -42,64 +42,81 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Logo and Tagline */}
+        {/* Brand Section */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/logo.png" alt="SantiClinic" />
+            <img src="/logo.png" alt="SantiClinic" loading="lazy" />
           </div>
           <p className="footer-tagline">
-            Tratamentos de beleza personalizados para
-            <br />
-            mulheres que merecem cuidado especial.
+            Tratamentos de beleza personalizados para mulheres que merecem cuidado especial.
           </p>
           <div className="footer-social">
-            <a href="https://instagram.com/santiclinic" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/santiclinic" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="social-icon">
               <InstagramIcon />
             </a>
-            <a href="https://facebook.com/santiclinic" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <a href="https://facebook.com/santiclinic" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="social-icon">
               <FacebookIcon />
             </a>
-            <a href="https://tiktok.com/@santiclinic" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <a href="https://tiktok.com/@santiclinic" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="social-icon">
               <TikTokIcon />
             </a>
           </div>
         </div>
 
+        {/* Navigation Links */}
+        <div className="footer-nav">
+          <h3 className="footer-heading">Navegação</h3>
+          <ul className="footer-links">
+            <li><a href="/servicos">Serviços</a></li>
+            <li><a href="/sobre">Sobre Nós</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/depoimentos">Depoimentos</a></li>
+          </ul>
+        </div>
+
         {/* Contact Information */}
         <div className="footer-contact">
-          <h3>Contato</h3>
-          <a href="tel:+351910144032" className="footer-contact-item">
-            <PhoneIcon /> (+351) 910 144-032
-          </a>
-          <div className="footer-contact-item">
-            <LocationIcon /> Praceta Agostinho
-            <br />
-            <span className="footer-address-indent">8005-147 Faro</span>
+          <h3 className="footer-heading">Contato</h3>
+          <div className="contact-info">
+            <a href="tel:+351910144032" className="contact-item">
+              <span className="contact-icon"><PhoneIcon /></span>
+              <span className="contact-text">(+351) 910 144-032</span>
+            </a>
+            <div className="contact-item">
+              <span className="contact-icon"><LocationIcon /></span>
+              <span className="contact-text">Praceta Agostinho, 8005-147 Faro</span>
+            </div>
           </div>
           <a 
             href="https://wa.me/351910144032" 
-            className="footer-whatsapp-button"
+            className="whatsapp-button"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <WhatsAppIcon /> Agende Agora
+            <WhatsAppIcon /> Agende pelo WhatsApp
           </a>
         </div>
 
         {/* Legal Links */}
         <div className="footer-legal">
-          <h3>Legal</h3>
+          <h3 className="footer-heading">Legal</h3>
           <ul className="footer-links">
             <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>
             <li><a href="/termos-e-condicoes">Termos e Condições</a></li>
+            <li><a href="/faq">Perguntas Frequentes</a></li>
           </ul>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="footer-copyright">
+      <div className="footer-bottom">
         <div className="footer-container">
-          <p>© 2025 <span className="highlight">SANTICLINIC</span>. Todos os direitos reservados.</p>
+          <p className="copyright">
+            © {new Date().getFullYear()} <span className="highlight">SANTICLINIC</span>. Todos os direitos reservados.
+          </p>
+          <p className="developer-credit">
+            Desenvolvido com ❤️ por <a href="#" target="_blank" rel="noopener noreferrer">Equipa SantiClinic</a>
+          </p>
         </div>
       </div>
     </footer>

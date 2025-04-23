@@ -1,0 +1,181 @@
+:root {
+    --navbar-height: 70px;
+    --navbar-bg: #FFFAE5;
+    --navbar-scrolled-bg: rgba(255, 250, 229, 0.98);
+    --primary-color: #A38200;
+    --primary-hover: #8a6e00;
+    --text-color: #292100;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --whatsapp-color: #25D366;
+    --whatsapp-hover: #128C7E;
+  }
+  
+  /* Base navbar styles */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--navbar-bg);
+    box-shadow: none;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+  }
+  
+  .navbar-scrolled {
+    background-color: var(--navbar-scrolled-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+  
+  /* Logo styles */
+  .navbar-logo a {
+    display: flex;
+    align-items: center;
+    height: var(--navbar-height);
+    text-decoration: none;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-logo a:hover .logo-text,
+  .navbar-logo a:focus .logo-text {
+    color: var(--primary-hover);
+    outline: none;
+  }
+  
+  /* Navbar actions container */
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* Language switcher */
+  .language-switcher {
+    display: flex;
+    align-items: center;
+    background-color: rgba(163, 130, 0, 0.08);
+    border-radius: 1.5rem;
+    padding: 0.3rem;
+    transition: var(--transition);
+  }
+  
+  .lang-btn {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 1.2rem;
+    transition: var(--transition);
+  }
+  
+  .lang-btn.active {
+    background-color: white;
+    color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lang-btn:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .lang-separator {
+    color: rgba(41, 33, 0, 0.3);
+    font-weight: 300;
+    user-select: none;
+  }
+  
+  /* WhatsApp button */
+  .navbar-whatsapp-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--whatsapp-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 1px 4px rgba(37, 211, 102, 0.2);
+  }
+  
+  .navbar-whatsapp-button:hover,
+  .navbar-whatsapp-button:focus {
+    background-color: var(--whatsapp-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 211, 102, 0.25);
+    outline: none;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0 1rem;
+    }
+    
+    .navbar-actions {
+      gap: 0.75rem;
+    }
+    
+    .navbar-whatsapp-button span {
+      display: none; /* Hide text on small screens */
+    }
+    
+    .navbar-whatsapp-button {
+      padding: 0.6rem;
+    }
+    
+    .lang-btn {
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  .lang-btn:focus-visible,
+  .navbar-whatsapp-button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }

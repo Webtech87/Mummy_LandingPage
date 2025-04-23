@@ -1,0 +1,265 @@
+:root {
+    --primary-color: #A38200;
+    --primary-light: #FFFAE5;
+    --text-color: #292100;
+    --border-color: #e6e6e6;
+    --highlight-color: #A38200;
+    --section-padding: 5rem 2rem;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .service-section {
+    padding: var(--section-padding);
+    background-color: #fff;
+  }
+  
+  .service-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Heading Styles */
+  .service-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+  }
+  
+  .service-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .clinic-name {
+    color: var(--highlight-color);
+    font-weight: 600;
+  }
+  
+  .highlight {
+    color: var(--highlight-color);
+    font-weight: 600;
+  }
+  
+  .service-subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 3rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .quote-marks {
+    margin-top: 0.5rem;
+  }
+  
+  /* Service Grid Styles */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin: 2rem 0;
+  }
+  
+  .service-box {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: var(--transition);
+    background-color: white;
+  }
+  
+  .service-box:hover {
+    border-color: var(--highlight-color);
+    box-shadow: 0 4px 12px rgba(163, 130, 0, 0.1);
+    transform: translateY(-3px);
+  }
+  
+  /* Offer Card Styles */
+  .offer-card {
+    background-color: var(--primary-light);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    
+  }
+  
+  .offer-icon {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--highlight-color);
+    
+  }
+  
+  .special-price {
+    margin-bottom: 1.5rem;
+  }
+  
+  .special-price p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--highlight-color);
+  }
+  
+  .limited-time {
+    font-size: 0.9rem !important;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+  
+  /* Countdown Timer */
+  .countdown {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+  }
+  
+  .timer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .timer-number {
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 3rem;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timer-label {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+  }
+  
+  /* Attention Section */
+  .attention-section {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .attention {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .promo-dates {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .promo-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--highlight-color);
+  }
+  
+  /* Buy Button */
+  .buy-button {
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    letter-spacing: 1px;
+  }
+  
+  .buy-button:hover {
+    background-color: #8a6e00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(163, 130, 0, 0.2);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .service-title {
+      font-size: 2.2rem;
+    }
+    
+    .service-subtitle {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .service-section {
+      padding: 4rem 1.5rem;
+    }
+    
+    .service-title {
+      font-size: 2rem;
+    }
+    
+    .service-description {
+      font-size: 1rem;
+    }
+    
+    .offer-card {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-title {
+      font-size: 1.8rem;
+    }
+    
+    .countdown {
+      gap: 0.5rem;
+    }
+    
+    .timer-number {
+      font-size: 1.2rem;
+      padding: 0.4rem 0.6rem;
+      min-width: 2.5rem;
+    }
+  }

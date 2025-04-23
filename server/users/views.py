@@ -45,7 +45,6 @@ SCOPES = [
 
 SAMPLE_SPREADSHEET_ID = os.environ.get('GOOGLE_SHEET_ID')
 
-print('++++++++++++++',SAMPLE_SPREADSHEET_ID)
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, SCOPES)
 

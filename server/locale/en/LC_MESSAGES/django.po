@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 15:40+0100\n"
+"POT-Creation-Date: 2025-04-23 15:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\users\forms.py:6
+#: .\payment\views.py:29
+msgid "Invalid payload"
+msgstr "Invalid payload"
+
+#: .\payment\views.py:32
+msgid "Invalid signature"
+msgstr "Invalid signature"
+
+#: .\payment\views.py:45
+msgid "Your Receipt from Our Site"
+msgstr "Your Receipt from Our Site"
+
+#: .\payment\views.py:99
+msgid "Payment completed!"
+msgstr "Payment completed!"
+
+#: .\payment\views.py:102
+msgid "Payment successfully processed!"
+msgstr "Payment successfully processed!"
+
+#: .\payment\views.py:110
+msgid "Payment Canceled"
+msgstr "Payment Canceled"
+
+#: .\payment\views.py:113
+msgid "Payment has been canceled!"
+msgstr "Payment has been canceled!"
+
+#: .\users\forms.py:7
 msgid "Select"
 msgstr "Select"
 
-#: .\users\forms.py:7
+#: .\users\forms.py:8
 msgid "Amount/Payments"
 msgstr "Amount/Payments"
 
-#: .\users\forms.py:8
+#: .\users\forms.py:9
 msgid "Procedures"
 msgstr "Procedures"
 
-#: .\users\forms.py:9
+#: .\users\forms.py:10
 msgid "Questions"
 msgstr "Questions"
 
-#: .\users\forms.py:17
+#: .\users\forms.py:15
 msgid "Nome completo"
-msgstr "Full Name"
+msgstr "Full name"
 
-#: .\users\forms.py:24
+#: .\users\forms.py:22
 msgid "Telefone"
 msgstr "Phone"
 
-#: .\users\forms.py:38
+#: .\users\forms.py:36
 msgid "Digite sua mensagem aqui"
 msgstr "Type your message here"
 
-#: .\users\templates\index.html:14
+#: .\users\templates\index.html:29
 msgid "Submit"
 msgstr "Submit"
+
+#: .\users\templates\index.html:32
+msgid "Buy"
+msgstr "Buy"

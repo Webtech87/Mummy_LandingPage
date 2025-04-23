@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <WhatsAppIcon /> Agende pelo WhatsApp
+            <WhatsAppIcon /> Enviar Mensagem
           </a>
         </div>
 

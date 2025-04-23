@@ -180,7 +180,7 @@ const ContactForm: React.FC = () => {
             >
               <option value="" disabled>Selecione um assunto</option>
               <option value="informacao">Informação</option>
-              <option value="agendamento">Agendamento</option>
+              <option value="agendamento">Procedimentos</option>
               <option value="precos">Preços</option>
               <option value="outro">Outro</option>
             </select>

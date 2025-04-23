@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+
+
 class Objects(models.TextChoices):
     select = "Select", _("Select")
     amount_payment = 'Amount/Payments', _('Amount/Payments')

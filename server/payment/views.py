@@ -76,7 +76,7 @@ def process(request):
                     'product_data': {
                         'name': "Protocol Mummy's day care by SantiClinic",
                     },
-                    'unit_amount': get_pacage_price()[0],  # price in cents
+                    'unit_amount': get_pacage_price()[0]*100,  # price in cents
                 },
                 'quantity': 1,
             },

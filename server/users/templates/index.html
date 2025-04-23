@@ -21,8 +21,7 @@
         <button type="submit" style="background: none; border: none; cursor: pointer;">🇵🇹 PT</button>
     </form>
 </div>
-<h3>Actual Pacage Price: <span style="color: green">{{ price.0 }}</span>€</h3>
-<h3>Actual Pacage Price: <span style="color: red">{{ price.1 }}</span>€</h3>
+<h3>Actual Price: <span style="color: green">{{ price.0 }}</span>€ <span style="color: red">{{ price.1 }}</span>€</h3>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

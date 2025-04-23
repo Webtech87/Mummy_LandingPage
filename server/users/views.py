@@ -26,13 +26,13 @@ def get_date_today():
 
 def get_pacage_price():
     if get_date_today() < datetime(2025, 5, 6).date():
-        return [89900, 99900]
+        return [899, 999]
     elif ((get_date_today() > datetime(2025, 5, 5).date())
           and
           (get_date_today() < datetime(2025, 5, 12).date())):
-        return [99900, 109900]
+        return [999, 1099]
     else:
-        return [109900]
+        return [1099]
 
 
 CREDENTIALS_FILE = settings.CREDENTIALS_FILE

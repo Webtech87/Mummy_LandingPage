@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-23 15:30+0100\n"
+"POT-Creation-Date: 2025-04-23 15:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,14 +69,22 @@ msgstr "Nome completo"
 msgid "Telefone"
 msgstr "Telefone"
 
+#: .\users\forms.py:27
+msgid "Assunto"
+msgstr ""
+
+#: .\users\forms.py:33
+msgid "Mensagem"
+msgstr ""
+
 #: .\users\forms.py:36
 msgid "Digite sua mensagem aqui"
 msgstr "Digite sua mensagem aqui"
 
-#: .\users\templates\index.html:29
+#: .\users\templates\index.html:28
 msgid "Submit"
 msgstr "Enviar"
 
-#: .\users\templates\index.html:32
+#: .\users\templates\index.html:31
 msgid "Buy"
 msgstr "Comprar"

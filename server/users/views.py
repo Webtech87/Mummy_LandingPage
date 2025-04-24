@@ -10,7 +10,6 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
 
-
 print("Verificando credenciais...")
 try:
     with open(settings.CREDENTIALS_FILE) as f:
@@ -24,19 +23,19 @@ except Exception as e:
 def get_date_today():
     return datetime.today().date()
 
+
 def get_pacage_price():
     if get_date_today() < datetime(2025, 5, 6).date():
-        return [89900, 99900]
+        return [899, 999]
     elif ((get_date_today() > datetime(2025, 5, 5).date())
           and
           (get_date_today() < datetime(2025, 5, 12).date())):
-        return [99900, 109900]
+        return [999, 1099]
     else:
-        return [109900]
+        return [1099]
 
 
 CREDENTIALS_FILE = settings.CREDENTIALS_FILE
-
 
 SCOPES = [
     'https://www.googleapis.com/auth/spreadsheets',
@@ -44,7 +43,6 @@ SCOPES = [
 ]
 
 SAMPLE_SPREADSHEET_ID = os.environ.get('GOOGLE_SHEET_ID')
-
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, SCOPES)
 
@@ -54,18 +52,66 @@ google_sheet = client.open_by_key(SAMPLE_SPREADSHEET_ID)
 
 sheet = google_sheet.get_worksheet(0)
 
+
 class IndexView(View):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
         get_date_today()
         form = InformatioinForm()
+
+        form_structure = {
+            'fields': {
+                'full_name': {
+                    'type': 'text',
+                    'label': str(form.fields['full_name'].label),
+                    'max_length': form.fields['full_name'].max_length,
+                    'required': True
+                },
+                'email': {
+                    'type': 'email',
+                    'label': 'Email',
+                    'max_length': form.fields['email'].max_length,
+                    'required': True
+                },
+                'phone': {
+                    'type': 'text',
+                    'label': str(form.fields['phone'].label),
+                    'max_length': form.fields['phone'].max_length,
+                    'required': True
+                },
+                'objective': {
+                    'type': 'select',
+                    'label': str(form.fields['objective'].label),
+                    'choices': [
+                        {'value': choice[0], 'label': choice[1]}
+                        for choice in form.fields['objective'].choices
+                    ],
+                    'initial': form.fields['objective'].initial,
+                    'required': True
+                },
+                'question_text': {
+                    'type': 'textarea',
+                    'label': str(form.fields['question_text'].label),
+                    'placeholder': form.fields['question_text'].widget.attrs['placeholder'],
+                    'rows': form.fields['question_text'].widget.attrs['rows'],
+                    'required': True
+                },
+                'accept': {
+                    'type': 'checkbox',
+                    'label': 'Accept',
+                    'initial': form.fields['accept'].initial,
+                    'required': True
+                }
+            }
+        }
+
         context = {
             "title": "Index Users",
-            'form': form,
             'price': get_pacage_price(),
+            'form_structure': form_structure,
         }
-        return render(request, self.template_name, context)
+        return JsonResponse(context)
 
     def post(self, request, *args, **kwargs):
         form = InformatioinForm(request.POST)

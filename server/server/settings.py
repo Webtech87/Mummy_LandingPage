@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
     #my apps
     'users',
-    'payment'
+    'payment',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -60,8 +61,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django.middleware.locale.LocaleMiddleware"
+    "django.middleware.locale.LocaleMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
 
 ROOT_URLCONF = 'server.urls'
 

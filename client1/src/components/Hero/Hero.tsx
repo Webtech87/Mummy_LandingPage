@@ -39,13 +39,16 @@ export default function Hero() {
   }, []);
 
   function handleBuy() {
-    alert("🚀 Obrigado pelo seu interesse no Mummy Day Care! Nossa equipe entrará em contato em breve para finalizar sua reserva com o preço especial.");
+    toast({
+      title: "Reserva Recebida! 🎉",
+      description: "Obrigado pelo seu interesse no Mummy Day Care! Nossa equipe entrará em contato em breve para finalizar sua reserva com o preço especial.",
+      duration: 5000,
+    });
   }
 
   return (
     <section className="hero-section" aria-labelledby="main-heading">
       <div className="hero-container">
-        {/* Hero Image with Overlay */}
         <div className="hero-image-container" aria-hidden="true">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/380c33a12cdaf3b40271534b0fb8f30ed980e6e9?placeholderIfAbsent=true"
@@ -68,26 +71,23 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main CTA Section */}
         <aside className="hero-cta-container" aria-label="Oferta especial do Mummy Day Care">
           <h2 className="hero-cta-heading">
-            Quero o Mummy Day Care com oferta!
+            Garanta Seu Mummy Day Care com Oferta Especial!
           </h2>
 
-          {/* Offer Card */}
           <div className="offer-card" role="region" aria-label="Oferta especial">
             <div className="offer-header">
-              <span className="offer-title">Ofertas Especiais</span>
+              <span className="offer-title">Promoção Exclusiva</span>
             </div>
 
             <div className="offer-price-container">
-              <span className="offer-price-label">Valor especial:</span>
+              <span className="offer-price-label">Valor Promocional:</span>
               <span className="offer-price-value">899€</span>
             </div>
 
-            <p className="offer-deadline">Somente até 5 de maio</p>
+            <p className="offer-deadline">Oferta válida até 5 de maio</p>
 
-            {/* Countdown Timer */}
             <div className="countdown-timer" aria-live="polite" aria-label="Contagem regressiva até o fim da oferta">
               <div className="timer-segment">
                 <span className="timer-number">{time.days}</span>
@@ -108,18 +108,18 @@ export default function Hero() {
             </div>
 
             <div className="offer-warning" aria-live="polite">
-              <p className="warning-title">Atenção!</p>
-              <p className="warning-period">De 6 à 12 de Maio</p>
+              <p className="warning-title">Atenção: Prazo Limitado!</p>
+              <p className="warning-period">Após 5 de maio até 12 de maio</p>
               <span className="regular-price">999€</span>
             </div>
+
             <button
               className="cta-button"
               onClick={handleBuy}
-              aria-label="Comprar agora o Mummy Day Care com desconto"
-              tabIndex={0}
+              aria-label="Reservar agora o Mummy Day Care com desconto especial"
               type="button"
             >
-              QUERO COMPRAR AGORA
+              RESERVAR AGORA COM DESCONTO
             </button>
           </div>
         </aside>

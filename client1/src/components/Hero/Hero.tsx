@@ -1,5 +1,35 @@
 import { useEffect, useState } from "react";
 import "../../styles/components/hero.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function getTargetDate() {
+  const now = new Date();
+  const firstDeadline = new Date(2025, 4, 5, 23, 59, 59); // May 5, 2025
+  const secondDeadline = new Date(2025, 4, 12, 23, 59, 59); // May 12, 2025
+  
+  // If current date is before May 5, target May 5
+  if (now < firstDeadline) {
+    return {
+      date: firstDeadline,
+      isFirstPhase: true
+    };
+  } 
+  // If current date is after May 5 but before May 12, target May 12
+  else if (now < secondDeadline) {
+    return {
+      date: secondDeadline,
+      isFirstPhase: false
+    };
+  } 
+  // If both deadlines have passed
+  else {
+    return {
+      date: secondDeadline, // Return the second deadline, timer will show zeros
+      isFirstPhase: false
+    };
+  }
+}
 
 function getTimeLeft(targetDate: Date) {
   const now = new Date();
@@ -20,8 +50,8 @@ function getTimeLeft(targetDate: Date) {
 }
 
 export default function Hero() {
-  const endDate = new Date(2024, 4, 5, 23, 59, 59);
-  const [time, setTime] = useState(() => getTimeLeft(endDate));
+  const [targetInfo, setTargetInfo] = useState(getTargetDate);
+  const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -34,16 +64,24 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(getTimeLeft(endDate)), 1000);
+    const interval = setInterval(() => {
+      // Check if we need to update the target date
+      const newTargetInfo = getTargetDate();
+      
+      // If the phase changed (from first to second deadline)
+      if (newTargetInfo.isFirstPhase !== targetInfo.isFirstPhase) {
+        setTargetInfo(newTargetInfo);
+      }
+      
+      // Update the countdown
+      setTime(getTimeLeft(newTargetInfo.date));
+    }, 1000);
+    
     return () => clearInterval(interval);
-  }, []);
+  }, [targetInfo]);
 
   function handleBuy() {
-    toast({
-      title: "Reserva Recebida! 🎉",
-      description: "Obrigado pelo seu interesse no Mummy Day Care! Nossa equipe entrará em contato em breve para finalizar sua reserva com o preço especial.",
-      duration: 5000,
-    });
+    toast("Reserva Recebida! 🎉 Obrigado pelo seu interesse no Mummy Day Care! Nossa equipe entrará em contato em breve para finalizar sua reserva com o preço especial.");
   }
 
   return (
@@ -83,10 +121,16 @@ export default function Hero() {
 
             <div className="offer-price-container">
               <span className="offer-price-label">Valor Promocional:</span>
-              <span className="offer-price-value">899€</span>
+              <span className="offer-price-value">
+                {targetInfo.isFirstPhase ? "899€" : "999€"}
+              </span>
             </div>
 
-            <p className="offer-deadline">Oferta válida até 5 de maio</p>
+            <p className="offer-deadline">
+              {targetInfo.isFirstPhase 
+                ? "Oferta válida até 5 de maio" 
+                : "Oferta válida até 12 de maio"}
+            </p>
 
             <div className="countdown-timer" aria-live="polite" aria-label="Contagem regressiva até o fim da oferta">
               <div className="timer-segment">
@@ -108,9 +152,19 @@ export default function Hero() {
             </div>
 
             <div className="offer-warning" aria-live="polite">
-              <p className="warning-title">Atenção: Prazo Limitado!</p>
-              <p className="warning-period">Após 5 de maio até 12 de maio</p>
-              <span className="regular-price">999€</span>
+              {targetInfo.isFirstPhase ? (
+                <>
+                  <p className="warning-title">Atenção: Prazo Limitado!</p>
+                  <p className="warning-period">Após 5 de maio até 12 de maio</p>
+                  <span className="regular-price">999€</span>
+                </>
+              ) : (
+                <>
+                  <p className="warning-title">Última Oportunidade!</p>
+                  <p className="warning-period">Promoção encerra em 12 de maio</p>
+                  <span className="regular-price">1099€</span>
+                </>
+              )}
             </div>
 
             <button
@@ -119,7 +173,9 @@ export default function Hero() {
               aria-label="Reservar agora o Mummy Day Care com desconto especial"
               type="button"
             >
-              RESERVAR AGORA COM DESCONTO
+              {targetInfo.isFirstPhase 
+                ? "RESERVAR AGORA COM DESCONTO ESPECIAL" 
+                : "RESERVAR COM DESCONTO LIMITADO"}
             </button>
           </div>
         </aside>

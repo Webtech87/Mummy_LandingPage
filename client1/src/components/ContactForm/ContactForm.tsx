@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/components/contact-form.css';
 
 interface FormValues {
@@ -8,6 +8,28 @@ interface FormValues {
   subject: string;
   message: string;
   privacyPolicy: boolean;
+}
+
+interface FormField {
+  type: string;
+  label: string;
+  required: boolean;
+  choices?: Array<{value: string; label: string}>;
+  max_length?: number;
+  initial?: any;
+  placeholder?: string;
+  rows?: number;
+}
+
+interface FormStructure {
+  fields: {
+    full_name: FormField;
+    email: FormField;
+    phone: FormField;
+    objective: FormField;
+    question_text: FormField;
+    accept: FormField;
+  }
 }
 
 const ContactForm: React.FC = () => {
@@ -22,6 +44,26 @@ const ContactForm: React.FC = () => {
   
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formStructure, setFormStructure] = useState<FormStructure | null>(null);
+
+  // Fetch form structure from the backend
+  useEffect(() => {
+    const fetchFormStructure = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/users/');
+        if (response.ok) {
+          const data = await response.json();
+          setFormStructure(data.form_structure);
+          console.log("Form structure from server:", data.form_structure);
+        }
+      } catch (error) {
+        console.error('Error fetching form structure:', error);
+      }
+    };
+    
+    fetchFormStructure();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -85,30 +127,101 @@ const ContactForm: React.FC = () => {
     
     if (validateForm()) {
       setIsSubmitting(true);
+      setFormStatus('idle');
       
       try {
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('Form submitted:', formValues);
+        // Get valid objective values from form structure if available
+        let objectiveValue = formValues.subject;
         
-        // Reset form after submission
-        setFormValues({
-          name: '',
-          phone: '',
-          email: '',
-          subject: '',
-          message: '',
-          privacyPolicy: false
+        // If we have form structure from the server, try to match the objective value
+        if (formStructure && formStructure.fields.objective.choices) {
+          const validChoices = formStructure.fields.objective.choices.map(choice => choice.value);
+          console.log("Valid objective choices:", validChoices);
+          
+          // If the current value isn't valid, try to find a close match
+          if (!validChoices.includes(objectiveValue)) {
+            if (objectiveValue === 'preco' && validChoices.includes('precos')) {
+              objectiveValue = 'precos';
+            } else if (objectiveValue === 'precos' && validChoices.includes('preco')) {
+              objectiveValue = 'preco';
+            } else if (objectiveValue === 'agendamento' && validChoices.includes('procedimentos')) {
+              objectiveValue = 'procedimentos';
+            } else if (validChoices.length > 0) {
+              // Fall back to the first valid choice if no match
+              objectiveValue = validChoices[0];
+            }
+          }
+        }
+        
+        console.log("Sending form with objective value:", objectiveValue);
+        
+        // Send data to your Django backend
+        const response = await fetch('http://localhost:8000/api/v1/users/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            full_name: formValues.name,
+            email: formValues.email,
+            phone: formValues.phone,
+            objective: objectiveValue,
+            question_text: formValues.message,
+            accept: formValues.privacyPolicy
+          }),
         });
-        
-        // Show success message
-        alert('Mensagem enviada com sucesso!');
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Form submitted successfully:', data);
+          
+          // Reset form after submission
+          setFormValues({
+            name: '',
+            phone: '',
+            email: '',
+            subject: '',
+            message: '',
+            privacyPolicy: false
+          });
+          
+          // Show success message
+          setFormStatus('success');
+          alert('Mensagem enviada com sucesso!');
+        } else {
+          console.error('Submission failed:', await response.text());
+          setFormStatus('error');
+          alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+        }
       } catch (error) {
         console.error('Submission error:', error);
+        setFormStatus('error');
+        alert('Erro ao enviar mensagem. Por favor, tente novamente.');
       } finally {
         setIsSubmitting(false);
       }
     }
+  };
+
+  // Get the valid objective choices from the backend if available
+  const getSelectOptions = () => {
+    if (formStructure && formStructure.fields.objective.choices) {
+      return formStructure.fields.objective.choices.map(choice => (
+        <option key={choice.value} value={choice.value}>
+          {choice.label}
+        </option>
+      ));
+    }
+    
+    // Fallback options if server data isn't available
+    return (
+      <>
+        <option value="informacao">Informação</option>
+        <option value="procedimentos">Procedimentos</option>
+        <option value="precos">Preços</option>
+        <option value="outro">Outro</option>
+      </>
+    );
   };
 
   return (
@@ -119,6 +232,18 @@ const ContactForm: React.FC = () => {
           Por favor, preencha o formulário abaixo para entrar
           em contacto com a nossa equipa.
         </p>
+        
+        {formStatus === 'success' && (
+          <div className="form-success-message">
+            Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
+          </div>
+        )}
+        
+        {formStatus === 'error' && (
+          <div className="form-error-message">
+            Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.
+          </div>
+        )}
         
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
@@ -179,10 +304,7 @@ const ContactForm: React.FC = () => {
               required
             >
               <option value="" disabled>Selecione um assunto</option>
-              <option value="informacao">Informação</option>
-              <option value="agendamento">Procedimentos</option>
-              <option value="precos">Preços</option>
-              <option value="outro">Outro</option>
+              {getSelectOptions()}
             </select>
             {formErrors.subject && <span className="error-message">{formErrors.subject}</span>}
           </div>

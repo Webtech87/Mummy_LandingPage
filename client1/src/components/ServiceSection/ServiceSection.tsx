@@ -5,6 +5,18 @@ interface ServiceBoxProps {
   title: string;
 }
 
+// Interface for the price information from the backend
+interface PriceInfo {
+  current_price: string;
+  next_price: string | null;
+  promo_type: string;
+  next_deadline: string | null;
+  days_remaining: number;
+  is_first_phase: boolean;
+  is_second_phase: boolean;
+  is_regular_price: boolean;
+}
+
 const ServiceBox: React.FC<ServiceBoxProps> = ({ title }) => {
   return (
     <div className="service-box">
@@ -13,38 +25,114 @@ const ServiceBox: React.FC<ServiceBoxProps> = ({ title }) => {
   );
 };
 
-const ServiceSection: React.FC = () => {
-  const [days, setDays] = useState(9);
-  const [hours, setHours] = useState(15);
-  const [minutes, setMinutes] = useState(42);
-  const [seconds, setSeconds] = useState(9);
+function getTargetDate() {
+  const now = new Date();
+  const firstDeadline = new Date(2025, 4, 5, 23, 59, 59); // May 5, 2025
+  const secondDeadline = new Date(2025, 4, 12, 23, 59, 59); // May 12, 2025
+  
+  // If current date is before May 5, target May 5
+  if (now < firstDeadline) {
+    return {
+      date: firstDeadline,
+      isFirstPhase: true
+    };
+  } 
+  // If current date is after May 5 but before May 12, target May 12
+  else if (now < secondDeadline) {
+    return {
+      date: secondDeadline,
+      isFirstPhase: false
+    };
+  } 
+  // If both deadlines have passed
+  else {
+    return {
+      date: secondDeadline, // Return the second deadline, timer will show zeros
+      isFirstPhase: false
+    };
+  }
+}
 
+function getTimeLeft(targetDate: Date) {
+  const now = new Date();
+  const diff = targetDate.getTime() - now.getTime();
+  if (diff <= 0) {
+    return {
+      days: "00",
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+    };
+  }
+  const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+  const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, "0");
+  const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+  return { days, hours, minutes, seconds };
+}
+
+const ServiceSection: React.FC = () => {
+  const [targetInfo, setTargetInfo] = useState(getTargetDate);
+  const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
+  const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
+
+  // Fetch price info from the backend
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else {
-        setSeconds(59);
-        if (minutes > 0) {
-          setMinutes(minutes - 1);
-        } else {
-          setMinutes(59);
-          if (hours > 0) {
-            setHours(hours - 1);
-          } else {
-            setHours(23);
-            if (days > 0) {
-              setDays(days - 1);
-            } else {
-              clearInterval(timer);
-            }
+    const fetchPriceInfo = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/payment/api/current-price/');
+        if (response.ok) {
+          const data = await response.json();
+          setServerPriceInfo(data);
+          
+          // If we have server data, update our phase information
+          if (data.is_first_phase !== undefined) {
+            setTargetInfo(prevInfo => ({
+              ...prevInfo,
+              isFirstPhase: data.is_first_phase
+            }));
           }
         }
+      } catch (error) {
+        console.error('Error fetching price info:', error);
       }
-    }, 1000);
+    };
+    
+    fetchPriceInfo();
+    
+    // Refresh price info every minute to stay in sync with server
+    const priceInterval = setInterval(fetchPriceInfo, 60000);
+    return () => clearInterval(priceInterval);
+  }, []);
 
-    return () => clearInterval(timer);
-  }, [days, hours, minutes, seconds]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Check if we need to update the target date
+      const newTargetInfo = getTargetDate();
+      
+      // If the phase changed (from first to second deadline)
+      if (newTargetInfo.isFirstPhase !== targetInfo.isFirstPhase) {
+        setTargetInfo(newTargetInfo);
+      }
+      
+      // Update the countdown
+      setTime(getTimeLeft(newTargetInfo.date));
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, [targetInfo]);
+
+  // Handle the buy button click - redirect to payment processing
+  const handleBuy = () => {
+    window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+  };
+
+  // Use server prices if available, otherwise use local calculations
+  const currentPrice = serverPriceInfo?.current_price || (targetInfo.isFirstPhase ? "899€" : "989€");
+  const nextPrice = serverPriceInfo?.next_price || (targetInfo.isFirstPhase ? "989€" : "1099€");
+  const isFirstPhase = serverPriceInfo?.is_first_phase !== undefined 
+    ? serverPriceInfo.is_first_phase 
+    : targetInfo.isFirstPhase;
 
   return (
     <section className="service-section">
@@ -92,36 +180,59 @@ const ServiceSection: React.FC = () => {
           </div>
 
           <div className="special-price">
-            <p>Valor especial: <span className="price">899€</span></p>
-            <p className="limited-time">Somente até 5 de maio</p>
+            <p>Valor especial: <span className="price">
+              {currentPrice}
+            </span></p>
+            <p className="limited-time">
+              {isFirstPhase 
+                ? "Somente até 5 de maio" 
+                : "Somente até 12 de maio"}
+            </p>
           </div>
 
           <div className="countdown">
             <div className="timer-item">
-              <span className="timer-number">{days.toString().padStart(2, '0')}</span>
+              <span className="timer-number">{time.days}</span>
               <span className="timer-label">Dias</span>
             </div>
             <div className="timer-item">
-              <span className="timer-number">{hours.toString().padStart(2, '0')}</span>
+              <span className="timer-number">{time.hours}</span>
               <span className="timer-label">Horas</span>
             </div>
             <div className="timer-item">
-              <span className="timer-number">{minutes.toString().padStart(2, '0')}</span>
+              <span className="timer-number">{time.minutes}</span>
               <span className="timer-label">Min</span>
             </div>
             <div className="timer-item">
-              <span className="timer-number">{seconds.toString().padStart(2, '0')}</span>
+              <span className="timer-number">{time.seconds}</span>
               <span className="timer-label">Seg</span>
             </div>
           </div>
 
           <div className="attention-section">
-            <p className="attention">Atenção!</p>
-            <p className="promo-dates">De 0 à 12 de Maio</p>
-            <p className="promo-price">989€</p>
+            {isFirstPhase ? (
+              <>
+                <p className="attention">Atenção!</p>
+                <p className="promo-dates">De 6 à 12 de Maio</p>
+                <p className="promo-price">{nextPrice}</p>
+              </>
+            ) : (
+              <>
+                <p className="attention">Última Oportunidade!</p>
+                <p className="promo-dates">Promoção encerra em 12 de Maio</p>
+                <p className="promo-price">{nextPrice}</p>
+              </>
+            )}
           </div>
 
-          <button className="buy-button">QUERO COMPRAR AGORA</button>
+          <button 
+            className="buy-button"
+            onClick={handleBuy}
+          >
+            {isFirstPhase 
+              ? "QUERO COMPRAR AGORA" 
+              : "APROVEITAR ÚLTIMA OFERTA"}
+          </button>
         </div>
       </div>
     </section>

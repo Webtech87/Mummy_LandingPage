@@ -3,6 +3,18 @@ import "../../styles/components/hero.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Interface for the price information from the backend
+interface PriceInfo {
+  current_price: string;
+  next_price: string | null;
+  promo_type: string;
+  next_deadline: string | null;
+  days_remaining: number;
+  is_first_phase: boolean;
+  is_second_phase: boolean;
+  is_regular_price: boolean;
+}
+
 function getTargetDate() {
   const now = new Date();
   const firstDeadline = new Date(2025, 4, 5, 23, 59, 59); // May 5, 2025
@@ -53,6 +65,36 @@ export default function Hero() {
   const [targetInfo, setTargetInfo] = useState(getTargetDate);
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [isMobile, setIsMobile] = useState(false);
+  const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
+
+  // Fetch price info from the backend
+  useEffect(() => {
+    const fetchPriceInfo = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/payment/api/current-price/');
+        if (response.ok) {
+          const data = await response.json();
+          setServerPriceInfo(data);
+          
+          // If we have server data, update our phase information
+          if (data.is_first_phase !== undefined) {
+            setTargetInfo(prevInfo => ({
+              ...prevInfo,
+              isFirstPhase: data.is_first_phase
+            }));
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching price info:', error);
+      }
+    };
+    
+    fetchPriceInfo();
+    
+    // Refresh price info every minute to stay in sync with server
+    const priceInterval = setInterval(fetchPriceInfo, 60000);
+    return () => clearInterval(priceInterval);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,8 +123,18 @@ export default function Hero() {
   }, [targetInfo]);
 
   function handleBuy() {
-    toast("Reserva Recebida! 🎉 Obrigado pelo seu interesse no Mummy Day Care! Nossa equipe entrará em contato em breve para finalizar sua reserva com o preço especial.");
+    // Redirect to the payment processing URL
+    window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+
+
   }
+
+  // Use server prices if available, otherwise use local calculations
+  const currentPrice = serverPriceInfo?.current_price || (targetInfo.isFirstPhase ? "899€" : "999€");
+  const nextPrice = serverPriceInfo?.next_price || (targetInfo.isFirstPhase ? "999€" : "1099€");
+  const isFirstPhase = serverPriceInfo?.is_first_phase !== undefined 
+    ? serverPriceInfo.is_first_phase 
+    : targetInfo.isFirstPhase;
 
   return (
     <section className="hero-section" aria-labelledby="main-heading">
@@ -122,12 +174,12 @@ export default function Hero() {
             <div className="offer-price-container">
               <span className="offer-price-label">Valor Promocional:</span>
               <span className="offer-price-value">
-                {targetInfo.isFirstPhase ? "899€" : "999€"}
+                {currentPrice}
               </span>
             </div>
 
             <p className="offer-deadline">
-              {targetInfo.isFirstPhase 
+              {isFirstPhase 
                 ? "Oferta válida até 5 de maio" 
                 : "Oferta válida até 12 de maio"}
             </p>
@@ -152,17 +204,17 @@ export default function Hero() {
             </div>
 
             <div className="offer-warning" aria-live="polite">
-              {targetInfo.isFirstPhase ? (
+              {isFirstPhase ? (
                 <>
                   <p className="warning-title">Atenção: Prazo Limitado!</p>
                   <p className="warning-period">Após 5 de maio até 12 de maio</p>
-                  <span className="regular-price">999€</span>
+                  <span className="regular-price">{nextPrice}</span>
                 </>
               ) : (
                 <>
                   <p className="warning-title">Última Oportunidade!</p>
                   <p className="warning-period">Promoção encerra em 12 de maio</p>
-                  <span className="regular-price">1099€</span>
+                  <span className="regular-price">{nextPrice}</span>
                 </>
               )}
             </div>
@@ -173,7 +225,7 @@ export default function Hero() {
               aria-label="Reservar agora o Mummy Day Care com desconto especial"
               type="button"
             >
-              {targetInfo.isFirstPhase 
+              {isFirstPhase 
                 ? "RESERVAR AGORA COM DESCONTO ESPECIAL" 
                 : "RESERVAR COM DESCONTO LIMITADO"}
             </button>

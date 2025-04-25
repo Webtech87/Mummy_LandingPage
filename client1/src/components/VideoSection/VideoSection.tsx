@@ -42,12 +42,14 @@ const VideoSection: React.FC<VideoSectionProps> = ({
           <video
             ref={videoRef}
             className="video-player"
-            src={videoSrc}
             poster={posterSrc}
             controls={isPlaying}
             preload="metadata"
             onEnded={() => setIsPlaying(false)}
-          />
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           
           {/* Custom play button overlay - only shows when video is not playing */}
           {!isPlaying && (

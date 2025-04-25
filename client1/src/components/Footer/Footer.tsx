@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
         {/* Brand Section */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/logo.png" alt="SantiClinic" loading="lazy" />
+          <h3 className="footer-heading">SantiClinic</h3>
           </div>
           <p className="footer-tagline">
             Tratamentos de beleza personalizados para mulheres que merecem cuidado especial.
@@ -86,15 +86,11 @@ const Footer: React.FC = () => {
               <span className="contact-icon"><LocationIcon /></span>
               <span className="contact-text">Praceta Agostinho, 8005-147 Faro</span>
             </div>
+
           </div>
-          <a 
-            href="https://wa.me/351910144032" 
-            className="whatsapp-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <WhatsAppIcon /> Enviar Mensagem
-          </a>
+
+          
+
         </div>
 
         {/* Legal Links */}

@@ -76,6 +76,7 @@ const ServiceSection: React.FC = () => {
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
   const [animateSeconds, setAnimateSeconds] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Fetch price info from the backend
   useEffect(() => {
@@ -129,7 +130,12 @@ const ServiceSection: React.FC = () => {
 
   // Handle the buy button click - redirect to payment processing
   const handleBuy = () => {
-    window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+    setIsLoading(true);
+    
+    // Simulate a short delay before redirecting (to show loading effect)
+    setTimeout(() => {
+      window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+    }, 1500);
   };
 
   // Use server prices if available, otherwise use local calculations
@@ -255,12 +261,21 @@ const ServiceSection: React.FC = () => {
           </div>
 
           <button 
-            className="buy-button"
+            className={`buy-button ${isLoading ? 'loading' : ''}`}
             onClick={handleBuy}
+            disabled={isLoading}
           >
-            {isFirstPhase 
-              ? "QUERO COMPRAR AGORA" 
-              : "APROVEITAR ÚLTIMA OFERTA"}
+            {isLoading ? (
+              <div className="button-loader">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+            ) : (
+              isFirstPhase 
+                ? "QUERO COMPRAR AGORA" 
+                : "APROVEITAR ÚLTIMA OFERTA"
+            )}
           </button>
         </div>
       </div>

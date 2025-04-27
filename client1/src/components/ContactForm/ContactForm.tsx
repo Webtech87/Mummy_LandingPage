@@ -41,7 +41,7 @@ const ContactForm: React.FC = () => {
     message: '',
     privacyPolicy: false
   });
-  
+
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -61,7 +61,7 @@ const ContactForm: React.FC = () => {
         console.error('Error fetching form structure:', error);
       }
     };
-    
+
     fetchFormStructure();
   }, []);
 
@@ -71,7 +71,7 @@ const ContactForm: React.FC = () => {
       ...prev,
       [name]: value
     }));
-    
+
     if (formErrors[name as keyof FormValues]) {
       setFormErrors(prev => ({
         ...prev,
@@ -86,7 +86,7 @@ const ContactForm: React.FC = () => {
       ...prev,
       [name]: checked
     }));
-    
+
     if (formErrors[name as keyof FormValues]) {
       setFormErrors(prev => ({
         ...prev,
@@ -97,47 +97,47 @@ const ContactForm: React.FC = () => {
 
   const validateForm = (): boolean => {
     const errors: Partial<Record<keyof FormValues, string>> = {};
-    
+
     if (!formValues.name.trim()) {
       errors.name = 'O campo nome é obrigatório.';
     }
-    
+
     if (!formValues.phone.trim()) {
       errors.phone = 'O campo telefone é obrigatório.';
     }
-    
+
     if (!formValues.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)) {
       errors.email = 'Por favor, insira um email válido.';
     }
-    
+
     if (!formValues.subject) {
       errors.subject = 'O campo assunto é obrigatório.';
     }
-    
+
     if (!formValues.privacyPolicy) {
-      errors.privacyPolicy = 'Você deve aceitar a Política de Privacidade.' as string;
+      errors.privacyPolicy = 'Você deve aceitar a Política de Privacidade.';
     }
-    
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
       setFormStatus('idle');
-      
+
       try {
         // Get valid objective values from form structure if available
         let objectiveValue = formValues.subject;
-        
+
         // If we have form structure from the server, try to match the objective value
         if (formStructure && formStructure.fields.objective.choices) {
           const validChoices = formStructure.fields.objective.choices.map(choice => choice.value);
           console.log("Valid objective choices:", validChoices);
-          
+
           // If the current value isn't valid, try to find a close match
           if (!validChoices.includes(objectiveValue)) {
             if (objectiveValue === 'preco' && validChoices.includes('precos')) {
@@ -152,9 +152,9 @@ const ContactForm: React.FC = () => {
             }
           }
         }
-        
+
         console.log("Sending form with objective value:", objectiveValue);
-        
+
         // Send data to your Django backend
         const response = await fetch('http://localhost:8000/api/v1/users/', {
           method: 'POST',
@@ -174,7 +174,7 @@ const ContactForm: React.FC = () => {
         if (response.ok) {
           const data = await response.json();
           console.log('Form submitted successfully:', data);
-          
+
           // Reset form after submission
           setFormValues({
             name: '',
@@ -184,19 +184,16 @@ const ContactForm: React.FC = () => {
             message: '',
             privacyPolicy: false
           });
-          
+
           // Show success message
           setFormStatus('success');
-          alert('Mensagem enviada com sucesso!');
         } else {
           console.error('Submission failed:', await response.text());
           setFormStatus('error');
-          alert('Erro ao enviar mensagem. Por favor, tente novamente.');
         }
       } catch (error) {
         console.error('Submission error:', error);
         setFormStatus('error');
-        alert('Erro ao enviar mensagem. Por favor, tente novamente.');
       } finally {
         setIsSubmitting(false);
       }
@@ -212,7 +209,7 @@ const ContactForm: React.FC = () => {
         </option>
       ));
     }
-    
+
     // Fallback options if server data isn't available
     return (
       <>
@@ -232,19 +229,43 @@ const ContactForm: React.FC = () => {
           Por favor, preencha o formulário abaixo para entrar
           em contacto com a nossa equipa.
         </p>
-        
+
         {formStatus === 'success' && (
           <div className="form-success-message">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="success-icon"
+            >
+              <path
+                fillRule="evenodd"
+                d="M22.65 12.53l-7.5 7.5a1.5 1.5 0 01-2.12 0l-7.5-7.5a1.5 1.5 0 012.12-2.12l6.4 6.4 6.4-6.4a1.5 1.5 0 012.12 2.12z"
+                clipRule="evenodd"
+              />
+            </svg>
             Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
           </div>
         )}
-        
+
         {formStatus === 'error' && (
           <div className="form-error-message">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="error-icon"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.401 3.003c1.155-2 4.077-2 5.232 0l6.25 10.875c1.155 2-0.118 4.5-2.616 4.5H6.767c-2.498 0-3.771-2.5-2.616-4.5l6.25-10.875zM12 6.75a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0v-3.75zM12 15a.75.75 0 10-1.5 0v-1.5a.75.75 0 001.5 0v1.5z"
+                clipRule="evenodd"
+              />
+            </svg>
             Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.
           </div>
         )}
-        
+
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <label htmlFor="name">Nome*</label>
@@ -260,7 +281,7 @@ const ContactForm: React.FC = () => {
             />
             {formErrors.name && <span className="error-message">{formErrors.name}</span>}
           </div>
-          
+
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="phone">Telefone*</label>
@@ -276,7 +297,7 @@ const ContactForm: React.FC = () => {
               />
               {formErrors.phone && <span className="error-message">{formErrors.phone}</span>}
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="email">Email*</label>
               <input
@@ -292,7 +313,7 @@ const ContactForm: React.FC = () => {
               {formErrors.email && <span className="error-message">{formErrors.email}</span>}
             </div>
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="subject">Assunto*</label>
             <select
@@ -308,7 +329,7 @@ const ContactForm: React.FC = () => {
             </select>
             {formErrors.subject && <span className="error-message">{formErrors.subject}</span>}
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="message">Mensagem</label>
             <textarea
@@ -320,7 +341,7 @@ const ContactForm: React.FC = () => {
               placeholder="Escreva sua mensagem aqui..."
             />
           </div>
-          
+
           <div className="form-group checkbox-group">
             <label className={`checkbox-container ${formErrors.privacyPolicy ? 'checkbox-error' : ''}`}>
               <input
@@ -337,9 +358,9 @@ const ContactForm: React.FC = () => {
             </label>
             {formErrors.privacyPolicy && <span className="error-message">{formErrors.privacyPolicy}</span>}
           </div>
-          
-          <button 
-            type="submit" 
+
+          <button
+            type="submit"
             className="submit-button"
             disabled={isSubmitting}
           >
@@ -356,3 +377,4 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
+

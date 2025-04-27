@@ -5,7 +5,7 @@ from django.views import View
 from django.shortcuts import render
 from .forms import InformatioinForm
 from django.http import JsonResponse
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 import gspread
 from google.oauth2.service_account import Credentials
 import json
@@ -186,19 +186,64 @@ class IndexView(View):
             }
             
             try:
-                send_mail(
-                    f"Dia da Mae. email de {form.cleaned_data['email']}",
-                    f"""
-                    De: {form.cleaned_data['email']}
-                    Nome Completo: {form.cleaned_data['full_name']}
-                    Telefone: {form.cleaned_data['phone']}
-                    Object: {form.cleaned_data['objective']}
-                    Mensagem: {form.cleaned_data['question_text']}
-                    """,
-                    settings.EMAIL_HOST_USER,
-                    [settings.RECEPTION_EMAIL],
-                    fail_silently=False,
+                # Create a well-formatted email message
+                email_subject = f"Novo contacto: {form.cleaned_data['full_name']} - Mummy Day Care"
+                
+                email_message = f"""
+                <html>
+                <head>
+                    <style>
+                        body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333333; }}
+                        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                        .header {{ background-color: #A38200; color: white; padding: 15px; text-align: center; }}
+                        .content {{ padding: 20px; background-color: #FFFAE5; }}
+                        .footer {{ text-align: center; margin-top: 20px; font-size: 12px; color: #666666; }}
+                        .field-label {{ font-weight: bold; color: #A38200; }}
+                        .field-value {{ margin-bottom: 15px; }}
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <h2>Novo Formulário de Contacto - Mummy Day Care</h2>
+                        </div>
+                        <div class="content">
+                            <p>Foi recebido um novo formulário de contacto com os seguintes detalhes:</p>
+                            
+                            <p class="field-label">Nome Completo:</p>
+                            <p class="field-value">{form.cleaned_data['full_name']}</p>
+                            
+                            <p class="field-label">Email:</p>
+                            <p class="field-value">{form.cleaned_data['email']}</p>
+                            
+                            <p class="field-label">Telefone:</p>
+                            <p class="field-value">{form.cleaned_data['phone']}</p>
+                            
+                            <p class="field-label">Assunto:</p>
+                            <p class="field-value">{form.cleaned_data['objective']}</p>
+                            
+                            <p class="field-label">Mensagem:</p>
+                            <p class="field-value">{form.cleaned_data['question_text']}</p>
+                        </div>
+                        <div class="footer">
+                            <p>Este email foi enviado automaticamente pelo sistema. Por favor, não responda diretamente.</p>
+                            <p>© 2025 SantiClinic. Todos os direitos reservados.</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+                """
+                
+                # Send HTML email
+                email = EmailMessage(
+                    subject=email_subject,
+                    body=email_message,
+                    from_email=settings.EMAIL_HOST_USER,
+                    to=[settings.RECEPTION_EMAIL],
                 )
+                email.content_subtype = "html"  # Set the content type to HTML
+                email.send()
+                
                 print("Email sent successfully!")
             except Exception as e:
                 print(f"Error sending email: {str(e)}")

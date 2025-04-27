@@ -280,7 +280,7 @@
 
 /* Submit button */
 .submit-button {
-  background-color: var(--primary-color);
+  background-color: green;
   color: white;
   border: none;
   border-radius: var(--border-radius);

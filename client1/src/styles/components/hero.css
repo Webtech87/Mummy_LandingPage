@@ -7,7 +7,7 @@
     --card-bg: #FFFFFF;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --accent-gradient: linear-gradient(97deg, #A38200 5%, #ffe290 76%);
+    --accent-gradient: linear-gradient(97deg, #A38200 5%, #ffe290 160%);
     --timer-bg: #fff9db;
     --warning-red: #c82e2e;
   }
@@ -55,7 +55,7 @@
   .hero-image-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 14/9;
     max-width: 800px;
     margin: 0 auto;
     border-radius: 30px;
@@ -153,7 +153,7 @@
     font-weight: 800;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color:#A38200;
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
@@ -335,7 +335,7 @@
   .cta-button {
     width: 100%;
     padding: 1.2rem;
-    background: var(--accent-gradient);
+    background: green;
     color: var(--text-light);
     border: none;
     border-radius: 12px;
@@ -370,6 +370,7 @@
   
   .cta-button:hover {
     transform: translateY(-2px);
+    background: var(--primary-color);
     box-shadow: 
       0 8px 20px rgba(163, 130, 0, 0.25),
       0 0 0 1px rgba(163, 130, 0, 0.1);
@@ -398,7 +399,8 @@
   
     .hero-image-container {
       aspect-ratio: 4/3;
-      border-radius: 20px;
+      border-radius: 70px;
+      
     }
   
     .hero-overlay {
@@ -438,11 +440,17 @@
   @media (max-width: 480px) {
     .hero-section {
       padding: 1.5rem 0.5rem;
-      margin-top: 6rem;
+      margin-top: 3rem;
+      
     }
+
+  
   
     .hero-image-container {
-      border-radius: 16px;
+      border-radius: 56px;
+      aspect-ratio: 2/3;
+  
+      
     }
   
     .offer-card {

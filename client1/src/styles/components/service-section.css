@@ -341,7 +341,7 @@
 
 /* Buy Button */
 .buy-button {
-  background: var(--gradient-gold);
+  background: green;
   color: white;
   border: none;
   border-radius: 30px;
@@ -372,6 +372,7 @@
 .buy-button:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 20px rgba(163, 130, 0, 0.3);
+  background: var(--primary-color);
 }
 
 .buy-button:hover::before {

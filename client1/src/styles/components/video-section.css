@@ -1,154 +1,185 @@
 :root {
-    --primary-color: #A38200;
-    --primary-hover: #8a6e00;
-    --text-color: #292100;
-    --light-bg: #FFFAE5;
-    --section-padding: 6rem 2rem;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  }
-  
+  --primary-color: #A38200;
+  --primary-hover: #8a6e00;
+  --text-color: #292100;
+  --light-bg: #FFFAE5;
+  --section-padding: 6rem 2rem;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --focus-outline: 2px solid var(--primary-color);
+  --focus-outline-offset: 2px;
+}
+
+.video-section {
+  padding: var(--section-padding);
+  background-color: var(--light-bg);
+}
+
+.video-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Text content styles */
+.video-section-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.video-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.video-section-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(41, 33, 0, 0.8);
+  margin-bottom: 1rem;
+}
+
+/* Video container styles */
+.video-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background-color: #000;
+  transition: var(--transition);
+}
+
+.video-wrapper:focus-within {
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Custom play button */
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+  z-index: 10;
+}
+
+.video-play-button:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.video-play-button svg {
+  width: 80px;
+  height: 80px;
+  transition: var(--transition);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.video-play-button span {
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: var(--transition);
+}
+
+.video-play-button:hover:not(:disabled) svg,
+.video-play-button:focus:not(:disabled) svg {
+  transform: scale(1.1);
+}
+
+.video-play-button:hover:not(:disabled) span,
+.video-play-button:focus:not(:disabled) span {
+  transform: translateY(3px);
+}
+
+.video-play-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Loading state */
+.video-player[data-loading="true"] {
+  filter: brightness(0.8);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
   .video-section {
-    padding: var(--section-padding);
-    background-color: var(--light-bg);
-  }
-  
-  .video-section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-  }
-  
-  /* Text content styles */
-  .video-section-content {
-    text-align: center;
-    max-width: 800px;
+    padding: 4rem 2rem;
   }
   
   .video-section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .video-section-title {
+    font-size: 1.8rem;
   }
   
   .video-section-description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: rgba(41, 33, 0, 0.8);
-    margin-bottom: 1rem;
-  }
-  
-  /* Video container styles */
-  .video-wrapper {
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    background-color: #000;
-  }
-  
-  .video-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Custom play button */
-  .video-play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 0;
-    z-index: 10;
+    font-size: 1.1rem;
   }
   
   .video-play-button svg {
-    width: 80px;
-    height: 80px;
-    transition: var(--transition);
+    width: 60px;
+    height: 60px;
   }
   
   .video-play-button span {
-    color: white;
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    transition: var(--transition);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-section {
+    padding: 2.5rem 1rem;
   }
   
-  .video-play-button:hover svg {
-    transform: scale(1.1);
+  .video-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
   
-  .video-play-button:hover span {
-    transform: translateY(3px);
+  .video-section-description {
+    font-size: 1rem;
   }
   
-  /* Responsive styles */
-  @media (max-width: 992px) {
-    .video-section {
-      padding: 4rem 2rem;
-    }
-    
-    .video-section-title {
-      font-size: 2rem;
-    }
+  .video-play-button svg {
+    width: 50px;
+    height: 50px;
   }
-  
-  @media (max-width: 768px) {
-    .video-section {
-      padding: 3rem 1.5rem;
-    }
-    
-    .video-section-title {
-      font-size: 1.8rem;
-    }
-    
-    .video-section-description {
-      font-size: 1.1rem;
-    }
-    
-    .video-play-button svg {
-      width: 60px;
-      height: 60px;
-    }
-    
-    .video-play-button span {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .video-section {
-      padding: 2.5rem 1rem;
-    }
-    
-    .video-section-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .video-section-description {
-      font-size: 1rem;
-    }
-  }
+}

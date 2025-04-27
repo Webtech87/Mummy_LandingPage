@@ -14,8 +14,8 @@ const Home: React.FC = () => {
       <VideoSection 
         videoSrc="/videos/clinic-tour.mp4"  // Update with your actual video path
         posterSrc="/images/video-thumbnail.jpg"  // Update with your actual thumbnail image
-        title="Experience SantiClinic" 
-        description="Take a virtual tour of our facilities and see our commitment to providing the highest quality care in a comfortable environment."
+        title="Mummy DayCare" 
+        description="Protocolo exclusivo Dia da Mãe Laser CO2| Skin Booster| Botox | Massagem | Cuidados faciais e capilares..."
       />
       
       <ServiceSection />

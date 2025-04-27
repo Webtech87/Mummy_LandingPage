@@ -162,13 +162,13 @@ const ServiceSection: React.FC = () => {
         </p>
         
         <p className="service-description">
-          Criámos o protocolo <span className="highlight">MUMMY DAY CARE</span>, para celebrar todas as 
+          Criámos o protocolo <span className="highlight">MUMMY DAYCARE</span>, para celebrar todas as 
           mães com cuidado, descanso e beleza.
         </p>
 
         <h3 className="service-subtitle">
           Tudo o que está incluído no 
-          <span className="quote-marks">"Mummy Day Care"</span>
+          <span className="quote-marks">"Mummy DayCare"</span>
         </h3>
 
         <div className="service-grid">

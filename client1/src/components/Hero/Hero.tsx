@@ -152,7 +152,7 @@ export default function Hero() {
                 Queres ser a primeira a usufruir dos novos serviços da Santiclinic?
               </h2>
               <h1 id="main-heading" className="hero-title">
-                Mummy Day Care
+                Mummy DayCare
               </h1>
               <h3 className="hero-tagline">
                 O presente perfeito para o Dia das Mães
@@ -163,7 +163,7 @@ export default function Hero() {
 
         <aside className="hero-cta-container" aria-label="Oferta especial do Mummy Day Care">
           <h2 className="hero-cta-heading">
-            Garanta Seu Mummy Day Care com Oferta Especial!
+            Garanta Seu Mummy DayCare com Oferta Especial!
           </h2>
 
           <div className="offer-card" role="region" aria-label="Oferta especial">

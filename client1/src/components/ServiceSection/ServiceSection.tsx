@@ -75,6 +75,7 @@ const ServiceSection: React.FC = () => {
   const [targetInfo, setTargetInfo] = useState(getTargetDate);
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
+  const [animateSeconds, setAnimateSeconds] = useState(false);
 
   // Fetch price info from the backend
   useEffect(() => {
@@ -117,6 +118,10 @@ const ServiceSection: React.FC = () => {
       
       // Update the countdown
       setTime(getTimeLeft(newTargetInfo.date));
+      
+      // Add pulse animation to seconds
+      setAnimateSeconds(true);
+      setTimeout(() => setAnimateSeconds(false), 500);
     }, 1000);
     
     return () => clearInterval(interval);
@@ -190,34 +195,58 @@ const ServiceSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="countdown">
-            <div className="timer-item">
-              <span className="timer-number">{time.days}</span>
-              <span className="timer-label">Dias</span>
+          <div className="countdown-container">
+            <div className="countdown-header">
+              <div className="countdown-title">A oferta expira em:</div>
+              <div className="countdown-line"></div>
             </div>
-            <div className="timer-item">
-              <span className="timer-number">{time.hours}</span>
-              <span className="timer-label">Horas</span>
-            </div>
-            <div className="timer-item">
-              <span className="timer-number">{time.minutes}</span>
-              <span className="timer-label">Min</span>
-            </div>
-            <div className="timer-item">
-              <span className="timer-number">{time.seconds}</span>
-              <span className="timer-label">Seg</span>
+            
+            <div className="countdown">
+              <div className="timer-item">
+                <div className="timer-number-container">
+                  <span className="timer-number">{time.days}</span>
+                </div>
+                <span className="timer-label">Dias</span>
+              </div>
+              <div className="timer-separator">:</div>
+              <div className="timer-item">
+                <div className="timer-number-container">
+                  <span className="timer-number">{time.hours}</span>
+                </div>
+                <span className="timer-label">Horas</span>
+              </div>
+              <div className="timer-separator">:</div>
+              <div className="timer-item">
+                <div className="timer-number-container">
+                  <span className="timer-number">{time.minutes}</span>
+                </div>
+                <span className="timer-label">Min</span>
+              </div>
+              <div className="timer-separator">:</div>
+              <div className="timer-item">
+                <div className={`timer-number-container ${animateSeconds ? 'pulse' : ''}`}>
+                  <span className="timer-number">{time.seconds}</span>
+                </div>
+                <span className="timer-label">Seg</span>
+              </div>
             </div>
           </div>
 
           <div className="attention-section">
             {isFirstPhase ? (
               <>
+                <div className="ribbon">
+                  <span className="ribbon-text">Oferta Especial</span>
+                </div>
                 <p className="attention">Atenção!</p>
                 <p className="promo-dates">De 6 à 12 de Maio</p>
                 <p className="promo-price">{nextPrice}</p>
               </>
             ) : (
               <>
+                <div className="ribbon">
+                  <span className="ribbon-text">Última Chance</span>
+                </div>
                 <p className="attention">Última Oportunidade!</p>
                 <p className="promo-dates">Promoção encerra em 12 de Maio</p>
                 <p className="promo-price">{nextPrice}</p>

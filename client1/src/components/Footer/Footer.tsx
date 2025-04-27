@@ -51,13 +51,13 @@ const Footer: React.FC = () => {
             Tratamentos de beleza personalizados para mulheres que merecem cuidado especial.
           </p>
           <div className="footer-social">
-            <a href="https://instagram.com/santiclinic" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://www.instagram.com/santi_clinic/?igsh=a3dydHlyOG5ld3k%3D#" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="social-icon">
               <InstagramIcon />
             </a>
-            <a href="https://facebook.com/santiclinic" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://www.facebook.com/santiclinic/?paipv=0&eav=AfZUxkfuslMkRNZhmVngRj_JItrq4WNeKPEkEItG3LMP4zWVI2a3jxdZ6HF2YrDQZxI&_rdr" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="social-icon">
               <FacebookIcon />
             </a>
-            <a href="https://tiktok.com/@santiclinic" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://www.tiktok.com/@santiclinic1?_t=8niy0jdosou&_r=1" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="social-icon">
               <TikTokIcon />
             </a>
           </div>
@@ -67,8 +67,8 @@ const Footer: React.FC = () => {
         <div className="footer-nav">
           <h3 className="footer-heading">Navegação</h3>
           <ul className="footer-links">
-            <li><a href="/">Serviços</a></li>
-            <li><a href="/">Sobre Nós</a></li>
+            <li><a href="https://www.santiclinic.eu/">Serviços</a></li>
+            <li><a href="https://www.santiclinic.eu/">Sobre Nós</a></li>
             
             
           </ul>

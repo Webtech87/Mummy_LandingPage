@@ -131,7 +131,7 @@
   
   .navbar-whatsapp-button:hover,
   .navbar-whatsapp-button:focus {
-    background-color: var(--whatsapp-hover);
+    background-color: rgb(34, 189, 34);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(37, 211, 102, 0.25);
     outline: none;

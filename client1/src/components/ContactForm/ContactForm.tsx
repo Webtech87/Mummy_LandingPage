@@ -244,7 +244,7 @@ const ContactForm: React.FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-            Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
+            Mensagem enviada com sucesso! A nossa equipa entrará em contato em breve.
           </div>
         )}
 

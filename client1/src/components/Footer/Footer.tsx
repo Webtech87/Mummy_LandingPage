@@ -67,10 +67,10 @@ const Footer: React.FC = () => {
         <div className="footer-nav">
           <h3 className="footer-heading">Navegação</h3>
           <ul className="footer-links">
-            <li><a href="/servicos">Serviços</a></li>
-            <li><a href="/sobre">Sobre Nós</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/depoimentos">Depoimentos</a></li>
+            <li><a href="/">Serviços</a></li>
+            <li><a href="/">Sobre Nós</a></li>
+            
+            
           </ul>
         </div>
 
@@ -97,9 +97,9 @@ const Footer: React.FC = () => {
         <div className="footer-legal">
           <h3 className="footer-heading">Legal</h3>
           <ul className="footer-links">
-            <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>
-            <li><a href="/termos-e-condicoes">Termos e Condições</a></li>
-            <li><a href="/faq">Perguntas Frequentes</a></li>
+            <li><a href="/politica-privacidade">Política de Privacidade</a></li>
+            <li><a href="/termos-condicoes">Termos e Condições</a></li>
+            
           </ul>
         </div>
       </div>

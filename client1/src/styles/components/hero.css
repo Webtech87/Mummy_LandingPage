@@ -50,6 +50,7 @@
     align-items: center;
     padding: 0 1rem;
     margin: 0 auto;
+    
   }
   
   .hero-image-container {
@@ -65,6 +66,7 @@
       0 0 0 1px rgba(163, 130, 0, 0.05);
     transform: perspective(1000px) rotateX(2deg);
     background: linear-gradient(135deg, #fff6e3, #fffbf0);
+    
   }
   
   .hero-image {
@@ -130,7 +132,7 @@
   
   .hero-cta-container {
     width: 100%;
-    max-width: 480px;
+    max-width: 780px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -139,6 +141,7 @@
     transform: translateY(-20px);
     opacity: 0;
     animation: slideUp 0.8s ease-out forwards;
+    
   }
   
   @keyframes slideUp {

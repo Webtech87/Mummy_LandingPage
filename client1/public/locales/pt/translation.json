@@ -1,4 +1,149 @@
 {
-  "title_watsap": "BorisPT"
+  "top_img": {
+    "h2": [
+      "Queres ser a primeira a usufruir dos novos serviços da Santiclinic",
+      "Garanta Seu Mummy DayCare com Oferta Especial!"
+    ],
+    "h3": "O presente perfeito para o Dia das Mães"
+  },
+  "top_ptomotion": {
+    "title": "Promoção Exclusiva",
+    "prom_price": "Valor Promocional",
+    "validation": [
+      "Oferta válida até 5 de maio",
+      "Oferta válida até 12 de maio"
+    ],
+    "cont_down": {
+      "days": "Dias",
+      "hours": "Horas"
+    },
+    "atention": [
+      [
+        "Atenção: Prazo Limitado!",
+        "Após 5 de maio até 12 de maio"
+      ],
+      [
+        "Última Oportunidade!",
+        "Promoção encerra em 12 de maio"
+      ]
+    ],
+    "button": [
+      "Reservar agora o Mummy Day Care com desconto especial",
+      "RESERVAR COM DESCONTO LIMITADO"
+    ]
+  },
+  "video_area": "Protocolo exclusivo Dia da Mãe Laser CO2| Skin Booster| Botox | Massagem | Cuidados faciais e capilares...",
+  "description_8_in_1": {
+    "title": "8 Tratamentos em Um Único Dia",
+    "p": [
+      "Ser mulher já é extraordinário. Ser mãe, então, é divino. As mães cuidam, amam, equilibram o mundo. E muitas vezes, esquecem-se de si próprias.",
+      [
+        "Na",
+        "queremos inverter esse papel nem que seja por um dia ou por uma semana."
+      ],
+      [
+        "Criámos o protocolo",
+        "para celebrar todas as mães com cuidado, descanso e beleza."
+      ]
+    ],
+    "pacage_desc": {
+      "title": "Tudo o que está incluído no",
+      "procedures": [
+        "Laser CO2 Resurfacing facial",
+        "Mesoterapia Capilar",
+        "Limpeza de Pele Profunda",
+        "Peeling de Diamante",
+        "Skin Booste",
+        "Botox",
+        "Massagem de relaxamento",
+        "Radiofrequência Corporal"
+      ]
+    }
+  },
+  "bot_ptomotion": {
+    "p": "Vagas limitadas",
+    "price_esp": "Valor especial",
+    "validation": [
+      "Somente até 5 de maio",
+      "Somente até 12 de maio"
+    ],
+    "contdwn": "A oferta expira em:",
+    "esp_prom": "Oferta Especial",
+    "atention": {
+      "header": [
+        "Oferta Especial",
+        "Última Chance"
+      ],
+      "title": [
+        "Atenção",
+        "Última Oportunidade"
+      ],
+      "p": [
+        "De 6 à 12 de Maio",
+        "Promoção encerra em 12 de Maio"
+      ]
+    },
+    "buy": [
+      "QUERO COMPRAR AGORA",
+      "APROVEITAR ÚLTIMA OFERTA"
+    ]
+  },
+  "contact_form": {
+    "title": "Fale Conosco",
+    "p": "Por favor, preencha o formulário abaixo para entrar em contacto com a nossa equipa.",
+    "fields": {
+      "name": {
+        "title": "Nome",
+        "ph": "Seu nome completo"
+      },
+      "phone": "Telefone",
+      "subject": {
+        "title": "Assunto",
+        "options": [
+          "Selecione um assunto",
+          "Informação",
+          "Procedimentos",
+          "Preços",
+          "Outro"
+        ]
+      },
+      "msg": {
+        "title": "Mensagem",
+        "ph": "Escreva sua mensagem aqui..."
+      },
+      "acept_p_t": [
+        "Li e aceito a ",
+        "Política de Privacidade"
+      ]
+    },
+    "sbm_button": "ENVIAR MENSAGEM",
+    "msg": {
+      "success": "Mensagem enviada com sucesso! A nossa equipa entrará em contato em breve.",
+      "error": "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente."
+    }
+  },
+  "footer": {
+    "sc_p": "Tratamentos de beleza personalizados para mulheres que merecem cuidado especial.",
+    "nav": {
+      "title": "Navegação",
+      "lt": [
+        "Serviços",
+        "Sobre Nós"
+      ]
+    },
+    "contact": "Contato",
+    "roles": {
+      "title": "Legal",
+      "lt": [
+        "Política de Privacidade",
+        "Termos e Condições"
+      ]
+    }
+  },
+  "footer_btn": [
+    "Todos os direitos reservados.",
+    "Desenvolvido com",
+    " por Equipa"
+  ]
 }
 

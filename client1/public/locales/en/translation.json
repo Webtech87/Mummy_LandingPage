@@ -1,3 +1,148 @@
 {
-  "title_watsap": "BorisEN"
+  "top_img": {
+    "h2": [
+      "Do you want to be the first to enjoy Santiclinic's new services",
+      "Secure Your Mummy DayCare with a Special Offer!"
+    ],
+    "h3": "The perfect gift for Mother's Day"
+  },
+  "top_ptomotion": {
+    "title": "Exclusive Promotion",
+    "prom_price": "Promotional Price",
+    "validation": [
+      "Offer valid until May 5",
+      "Offer valid until May 12"
+    ],
+    "cont_down": {
+      "days": "Days",
+      "hours": "Hours"
+    },
+    "atention": [
+      [
+        "Attention: Limited Time!",
+        "After May 5 until May 12"
+      ],
+      [
+        "Last Chance!",
+        "Promotion ends on May 12"
+      ]
+    ],
+    "button": [
+      "Book Mummy Day Care now with a special discount",
+      "BOOK WITH LIMITED DISCOUNT"
+    ]
+  },
+  "video_area": "Exclusive Mother's Day Protocol | CO2 Laser | Skin Booster | Botox | Massage | Facial and Hair Care...",
+  "description_8_in_1": {
+    "title": "8 Treatments in One Day",
+    "p": [
+      "Being a woman is already extraordinary. Being a mother is divine. Mothers care, love, and balance the world. And often, they forget about themselves.",
+      [
+        "At",
+        "we want to change that, even if just for a day or a week."
+      ],
+      [
+        "We created the protocol",
+        "to celebrate all mothers with care, rest, and beauty."
+      ]
+    ],
+    "pacage_desc": {
+      "title": "Everything included in the",
+      "procedures": [
+        "Facial CO2 Laser Resurfacing",
+        "Hair Mesotherapy",
+        "Deep Skin Cleansing",
+        "Diamond Peeling",
+        "Skin Booster",
+        "Botox",
+        "Relaxation Massage",
+        "Body Radiofrequency"
+      ]
+    }
+  },
+  "bot_ptomotion": {
+    "p": "Limited spots",
+    "price_esp": "Special price",
+    "validation": [
+      "Only until May 5",
+      "Only until May 12"
+    ],
+    "contdwn": "Offer expires in:",
+    "esp_prom": "Special Offer",
+    "atention": {
+      "header": [
+        "Special Offer",
+        "Last Chance"
+      ],
+      "title": [
+        "Attention",
+        "Last Opportunity"
+      ],
+      "p": [
+        "From May 6 to 12",
+        "Promotion ends on May 12"
+      ]
+    },
+    "buy": [
+      "I WANT TO BUY NOW",
+      "TAKE ADVANTAGE OF LAST OFFER"
+    ]
+  },
+  "contact_form": {
+    "title": "Contact Us",
+    "p": "Please fill out the form below to get in touch with our team.",
+    "fields": {
+      "name": {
+        "title": "Name",
+        "ph": "Your full name"
+      },
+      "phone": "Phone",
+      "subject": {
+        "title": "Subject",
+        "options": [
+          "Select an subject",
+          "Information",
+          "Procedures",
+          "Prices",
+          "Other"
+        ]
+      },
+      "msg": {
+        "title": "Message",
+        "ph": "Write your message here..."
+      },
+      "acept_p_t": [
+        "I have read and accept the ",
+        "Privacy Policy"
+      ]
+    },
+    "sbm_button": "SEND MESSAGE",
+    "msg": {
+      "success": "Message sent successfully! Our team will contact you shortly.",
+      "error": "An error occurred while sending your message. Please try again."
+    }
+  },
+  "footer": {
+    "sc_p": "Personalized beauty treatments for women who deserve special care.",
+    "nav": {
+      "title": "Navigation",
+      "lt": [
+        "Services",
+        "About Us"
+      ]
+    },
+    "contact": "Contact",
+    "roles": {
+      "title": "Legal",
+      "lt": [
+        "Privacy Policy",
+        "Terms and Conditions"
+      ]
+    }
+  },
+  "footer_btn": [
+    "All rights reserved.",
+    "Developed with",
+    " by Team"
+  ]
 }

@@ -81,7 +81,7 @@ const Navbar = () => {
                         aria-label="Contact on WhatsApp"
                     >
                         <WhatsAppIcon/>
-                        <span>{t("title_watsap")}</span>
+                        <span>WhatsApp</span>
                     </a>
                 </div>
             </div>

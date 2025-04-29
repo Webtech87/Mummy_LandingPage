@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/components/contact-form.css';
+import { useTranslation} from "react-i18next";
 
 interface FormValues {
   name: string;
@@ -199,7 +200,7 @@ const ContactForm: React.FC = () => {
       }
     }
   };
-
+  const {t} = useTranslation();
   // Get the valid objective choices from the backend if available
   const getSelectOptions = () => {
     if (formStructure && formStructure.fields.objective.choices) {
@@ -209,25 +210,22 @@ const ContactForm: React.FC = () => {
         </option>
       ));
     }
-
     // Fallback options if server data isn't available
     return (
       <>
-        <option value="informacao">Informação</option>
-        <option value="procedimentos">Procedimentos</option>
-        <option value="precos">Preços</option>
-        <option value="outro">Outro</option>
+        <option value="informacao">{t("contact_form.fields.subject.options.1")}</option>
+        <option value="procedimentos">{t("contact_form.fields.subject.options.2")}</option>
+        <option value="precos">{t("contact_form.fields.subject.options.3")}</option>
+        <option value="outro">{t("contact_form.fields.subject.options.4")}</option>
       </>
     );
   };
-
   return (
     <section className="contact-form-section">
       <div className="contact-form-container">
-        <h2 className="contact-form-title">Fale Conosco</h2>
+        <h2 className="contact-form-title">{t("contact_form.title")}</h2>
         <p className="contact-form-description">
-          Por favor, preencha o formulário abaixo para entrar
-          em contacto com a nossa equipa.
+          {t("contact_form.p")}
         </p>
 
         {formStatus === 'success' && (
@@ -244,7 +242,7 @@ const ContactForm: React.FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-            Mensagem enviada com sucesso! A nossa equipa entrará em contato em breve.
+            {t("contact_form.msg.success")}
           </div>
         )}
 
@@ -262,20 +260,20 @@ const ContactForm: React.FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-            Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.
+            {t("contact_form.msg.error")}
           </div>
         )}
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
-            <label htmlFor="name">Nome*</label>
+            <label htmlFor="name">{t("contact_form.fields.name.title")}*</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formValues.name}
               onChange={handleChange}
-              placeholder="Seu nome completo"
+              placeholder={t("contact_form.fields.name.ph")}
               className={formErrors.name ? 'error' : ''}
               required
             />
@@ -284,7 +282,7 @@ const ContactForm: React.FC = () => {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="phone">Telefone*</label>
+              <label htmlFor="phone">{t("contact_form.fields.phone")}*</label>
               <input
                 type="tel"
                 id="phone"
@@ -315,7 +313,7 @@ const ContactForm: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="subject">Assunto*</label>
+            <label htmlFor="subject">{t("contact_form.fields.subject.title")}*</label>
             <select
               id="subject"
               name="subject"
@@ -324,21 +322,21 @@ const ContactForm: React.FC = () => {
               className={formErrors.subject ? 'error' : ''}
               required
             >
-              <option value="" disabled>Selecione um assunto</option>
+              <option value="" disabled>{t("contact_form.fields.subject.options.0")}</option>
               {getSelectOptions()}
             </select>
             {formErrors.subject && <span className="error-message">{formErrors.subject}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">Mensagem</label>
+            <label htmlFor="message">{t("contact_form.fields.msg.title")}</label>
             <textarea
               id="message"
               name="message"
               value={formValues.message}
               onChange={handleChange}
               rows={5}
-              placeholder="Escreva sua mensagem aqui..."
+              placeholder={t("contact_form.fields.msg.ph")}
             />
           </div>
 
@@ -353,7 +351,7 @@ const ContactForm: React.FC = () => {
               />
               <span className="checkmark"></span>
               <span className="checkbox-text">
-                Li e aceito a <a href="/politica-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>*
+                {t("contact_form.fields.acept_p_t.0")} <a href="/politica-privacidade" target="_blank" rel="noopener noreferrer">{t("contact_form.fields.acept_p_t.1")}</a>*
               </span>
             </label>
             {formErrors.privacyPolicy && <span className="error-message">{formErrors.privacyPolicy}</span>}
@@ -367,7 +365,7 @@ const ContactForm: React.FC = () => {
             {isSubmitting ? (
               <span className="button-loader"></span>
             ) : (
-              'ENVIAR MENSAGEM'
+                t("contact_form.sbm_button")
             )}
           </button>
         </form>

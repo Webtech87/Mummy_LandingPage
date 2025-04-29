@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/components/service-section.css';
+import { useTranslation } from 'react-i18next';
 
 interface ServiceBoxProps {
   title: string;
@@ -140,46 +141,43 @@ const ServiceSection: React.FC = () => {
 
   // Use server prices if available, otherwise use local calculations
   const currentPrice = serverPriceInfo?.current_price || (targetInfo.isFirstPhase ? "899€" : "989€");
-  const nextPrice = serverPriceInfo?.next_price || (targetInfo.isFirstPhase ? "989€" : "1099€");
+  const nextPrice = serverPriceInfo?.next_price || (targetInfo.isFirstPhase ? "999€" : "1099€");
   const isFirstPhase = serverPriceInfo?.is_first_phase !== undefined 
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
 
+  const { t } = useTranslation();
   return (
     <section className="service-section">
       <div className="service-container">
-        <h2 className="service-title">8 Tratamentos em Um Único Dia</h2>
+        <h2 className="service-title">{t("description_8_in_1.title")}</h2>
         
         <p className="service-description">
-          Ser mulher já é extraordinário. Ser mãe, então, é divino. As mães 
-          cuidam, amam, equilibram o mundo. E muitas vezes, esquecem-se 
-          de si próprias.
+          {t("description_8_in_1.p.0")}
         </p>
         
         <p className="service-description">
-          Na <span className="clinic-name">SANTICLINIC</span>, queremos inverter esse papel nem que seja por 
-          um dia ou por uma semana.
+          {t("description_8_in_1.p.1.0")}<span className="clinic-name"> SANTICLINIC </span>, {t("description_8_in_1.p.1.1")}
         </p>
         
         <p className="service-description">
-          Criámos o protocolo <span className="highlight">MUMMY DAYCARE</span>, para celebrar todas as 
-          mães com cuidado, descanso e beleza.
+          {t("description_8_in_1.p.2.0")} <span className="highlight"> MUMMY DAYCARE </span>, {t("description_8_in_1.p.2.1")}
         </p>
 
         <h3 className="service-subtitle">
-          Tudo o que está incluído no 
+          {t("description_8_in_1.pacage_desc.title")}
           <span className="quote-marks">"Mummy DayCare"</span>
         </h3>
 
         <div className="service-grid">
-          <ServiceBox title="Laser CO2 Resurfacing facial" />
-          <ServiceBox title="Mesoterapia Capilar" />
-          <ServiceBox title="Limpeza de Pele Profunda" />
-          <ServiceBox title="Peeling de Diamante" />
-          <ServiceBox title="Skin Booster" />
-          <ServiceBox title="Botox" />
-          <ServiceBox title="Massagem de relaxamento" />
-          <ServiceBox title="Radiofrequência Corporal" />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.0")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.1")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.2")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.3")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.4")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.5")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.6")} />
+          <ServiceBox title={t("description_8_in_1.pacage_desc.procedures.7")} />
         </div>
 
         <div className="offer-card">
@@ -187,23 +185,23 @@ const ServiceSection: React.FC = () => {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#A38200"/>
             </svg>
-            <span>Vagas limitadas</span>
+            <span>{t("bot_ptomotion.p")}</span>
           </div>
 
           <div className="special-price">
-            <p>Valor especial: <span className="price">
+            <p>{t("bot_ptomotion.price_esp")}: <span className="price">
               {currentPrice}
             </span></p>
             <p className="limited-time">
               {isFirstPhase 
-                ? "Somente até 5 de maio" 
-                : "Somente até 12 de maio"}
+                ? t("bot_ptomotion.validation.0")
+                : t("bot_ptomotion.validation.1")}
             </p>
           </div>
 
           <div className="countdown-container">
             <div className="countdown-header">
-              <div className="countdown-title">A oferta expira em:</div>
+              <div className="countdown-title">{t("bot_ptomotion.contdwn")}</div>
               <div className="countdown-line"></div>
             </div>
             
@@ -212,14 +210,14 @@ const ServiceSection: React.FC = () => {
                 <div className="timer-number-container">
                   <span className="timer-number">{time.days}</span>
                 </div>
-                <span className="timer-label">Dias</span>
+                <span className="timer-label">{t("top_ptomotion.cont_down.days")}</span>
               </div>
               <div className="timer-separator">:</div>
               <div className="timer-item">
                 <div className="timer-number-container">
                   <span className="timer-number">{time.hours}</span>
                 </div>
-                <span className="timer-label">Horas</span>
+                <span className="timer-label">{t("top_ptomotion.cont_down.hours")}</span>
               </div>
               <div className="timer-separator">:</div>
               <div className="timer-item">
@@ -242,19 +240,19 @@ const ServiceSection: React.FC = () => {
             {isFirstPhase ? (
               <>
                 <div className="ribbon">
-                  <span className="ribbon-text">Oferta Especial</span>
+                  <span className="ribbon-text">{t("bot_ptomotion.atention.header.0")}</span>
                 </div>
-                <p className="attention">Atenção!</p>
-                <p className="promo-dates">De 6 à 12 de Maio</p>
+                <p className="attention">{t("bot_ptomotion.atention.title.0")}!</p>
+                <p className="promo-dates">{t("bot_ptomotion.atention.p.0")}</p>
                 <p className="promo-price">{nextPrice}</p>
               </>
             ) : (
               <>
                 <div className="ribbon">
-                  <span className="ribbon-text">Última Chance</span>
+                  <span className="ribbon-text">{t("bot_ptomotion.atention.header.1")}</span>
                 </div>
-                <p className="attention">Última Oportunidade!</p>
-                <p className="promo-dates">Promoção encerra em 12 de Maio</p>
+                <p className="attention">{t("bot_ptomotion.atention.title.1")}!</p>
+                <p className="promo-dates">{t("bot_ptomotion.atention.p.1")}</p>
                 <p className="promo-price">{nextPrice}</p>
               </>
             )}
@@ -273,8 +271,8 @@ const ServiceSection: React.FC = () => {
               </div>
             ) : (
               isFirstPhase 
-                ? "QUERO COMPRAR AGORA" 
-                : "APROVEITAR ÚLTIMA OFERTA"
+                ? t("bot_ptomotion.buy.0")
+                : t("bot_ptomotion.buy.1")
             )}
           </button>
         </div>

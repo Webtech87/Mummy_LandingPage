@@ -20,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', "https://mummy-landingpage.onrender.com", "https://mummy-landingpage-frontend.onrender.com",]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "mummy-landingpage.onrender.com", "mummy-landingpage-frontend.onrender.com",]
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),

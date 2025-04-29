@@ -10,7 +10,7 @@ urlpatterns = [
     path('payment_completed/', payment_completed , name='payment_completed'),
     path('payment_canceled/', payment_canceled , name='payment_canceled'),
     path('stripe/webhook/', stripe_webhook, name='stripe-webhook'),
-    path('api/current-price/', get_current_price_info, name='current_price_info'),
+    path('current-price/', get_current_price_info, name='current_price_info'),
     
 
 ]

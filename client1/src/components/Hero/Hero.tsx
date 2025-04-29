@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "../../styles/components/hero.css";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Interface for the price information from the backend
@@ -64,7 +63,6 @@ function getTimeLeft(targetDate: Date) {
 export default function Hero() {
   const [targetInfo, setTargetInfo] = useState(getTargetDate);
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
-  const [isMobile, setIsMobile] = useState(false);
   const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
 
   // Fetch price info from the backend
@@ -94,15 +92,6 @@ export default function Hero() {
     // Refresh price info every minute to stay in sync with server
     const priceInterval = setInterval(fetchPriceInfo, 60000);
     return () => clearInterval(priceInterval);
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {

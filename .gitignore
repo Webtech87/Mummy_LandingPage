@@ -4,5 +4,4 @@
 /server/db.sqlite3
 /server/__pycache__/
 __pycache__/
-credentials/
-
+/server/credentials/

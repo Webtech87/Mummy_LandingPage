@@ -71,7 +71,7 @@ export default function Hero() {
   useEffect(() => {
     const fetchPriceInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/payment/api/current-price/');
+        const response = await fetch('https://mummy-landingpage.onrender.com/api/v1/payment/api/current-price/');
         if (response.ok) {
           const data = await response.json();
           setServerPriceInfo(data);
@@ -124,7 +124,7 @@ export default function Hero() {
 
   function handleBuy() {
     // Redirect to the payment processing URL
-    window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+    window.location.href = 'https://mummy-landingpage.onrender.com/api/v1/payment/process/';
 
 
   }

@@ -20,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "https://mummy-landingpage.onrender.com", "https://mummy-landingpage-frontend.onrender.com",]
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
@@ -67,6 +67,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://mummy-landingpage-frontend.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

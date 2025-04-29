@@ -51,7 +51,7 @@ const ContactForm: React.FC = () => {
   useEffect(() => {
     const fetchFormStructure = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/users/');
+        const response = await fetch('https://mummy-landingpage.onrender.com/api/v1/users/');
         if (response.ok) {
           const data = await response.json();
           setFormStructure(data.form_structure);
@@ -156,7 +156,7 @@ const ContactForm: React.FC = () => {
         console.log("Sending form with objective value:", objectiveValue);
 
         // Send data to your Django backend
-        const response = await fetch('http://localhost:8000/api/v1/users/', {
+        const response = await fetch('https://mummy-landingpage.onrender.com/api/v1/users/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

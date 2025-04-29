@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+import base64
 
 load_dotenv()
 
@@ -118,6 +119,11 @@ DATABASES = {
 }
 
 CREDENTIALS_FILE = BASE_DIR / "credentials" / "client_secret.json"
+
+if os.environ.get("CREDENTIALS_BASE64"):
+    CREDENTIALS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(CREDENTIALS_FILE, "wb") as f:
+        f.write(base64.b64decode(os.environ["CREDENTIALS_BASE64"]))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

@@ -9,6 +9,7 @@ dotenv==0.9.9
 google-auth==2.39.0
 google-auth-oauthlib==1.2.2
 gspread==6.2.0
+gunicorn==23.0.0
 httplib2==0.22.0
 idna==3.10
 Markdown==3.8
@@ -25,3 +26,4 @@ six==1.17.0
 sqlparse==0.5.3
 tzdata==2025.2
 urllib3==2.4.0
+whitenoise==6.9.0

@@ -61,7 +61,11 @@ def payment_test(request):
 def process(request):
     try:
         # Get price information from users.views
+        print("GET method received")
+        print("Calling get_pacage_price...")
         price_info = get_pacage_price()
+        print(f"price_info: {price_info}")
+        
         price_in_cents = price_info[0]  # Already in cents
         
         # Create a formatted display price (show as whole number)

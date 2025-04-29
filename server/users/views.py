@@ -10,6 +10,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
 
+'''
 print("Verificando credenciais...")
 try:
     with open(settings.CREDENTIALS_FILE) as f:
@@ -18,6 +19,8 @@ try:
         print(f"Email da conta de serviço: {service_account_email}")
 except Exception as e:
     print(f"Erro ao ler credenciais: {str(e)}")
+
+'''
 
 
 def get_date_today():

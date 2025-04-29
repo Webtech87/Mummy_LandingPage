@@ -82,7 +82,7 @@ const ServiceSection: React.FC = () => {
   useEffect(() => {
     const fetchPriceInfo = async () => {
       try {
-        const response = await fetch('https://mummy-landingpage.onrender.com/api/v1/payment/api/current-price/');
+        const response = await fetch('https://mummy-landingpage.onrender.com/api/v1/payment/current-price/');
         if (response.ok) {
           const data = await response.json();
           setServerPriceInfo(data);

@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 from users.views import get_pacage_price, get_date_today
+from django.views.decorators.http import require_GET
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -56,7 +57,7 @@ def stripe_webhook(request):
 def payment_test(request):
     return redirect('payment:process')
 
-
+@require_GET
 def process(request):
     try:
         # Get price information from users.views

@@ -1,5 +1,5 @@
-from django.urls import path, include
-from .views import payment_test, process, payment_canceled, payment_completed, stripe_webhook
+from django.urls import path
+from .views import process, payment_canceled, payment_completed, stripe_webhook
 from .views import get_current_price_info
 
 
@@ -11,7 +11,5 @@ urlpatterns = [
     path('payment_canceled/', payment_canceled , name='payment_canceled'),
     path('stripe/webhook/', stripe_webhook, name='stripe-webhook'),
     path('current-price/', get_current_price_info, name='current_price_info'),
-    
-
 ]
 

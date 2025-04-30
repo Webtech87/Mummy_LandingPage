@@ -64,7 +64,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onDecline }) =>
             <div className="cookie-details">
               <p>
                 Ao continuar navegando, você concorda com a nossa{' '}
-                <a href="/privacy-policy" className="privacy-link">Política de Privacidade</a>.
+                <a href="/politica-privacidade" className="privacy-link">Política de Privacidade</a>.
               </p>
               <ul className="cookie-types">
                 <li>

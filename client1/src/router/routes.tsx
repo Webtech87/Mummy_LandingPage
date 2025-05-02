@@ -6,6 +6,7 @@ import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
 import PrivacyPolicy from '../components/PrivacyPolicy';
 import TermsConditions from '../pages/TermsConditions';
+import PaymentCanceled from '../components/Payment/PaymentCancelled';
 
 const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="*" element={<NotFound />} />
       <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
       <Route path="/termos-condicoes" element={<TermsConditions />} />
+      <Route path="/payment-canceled" element={<PaymentCanceled />} />
     </Routes>
   );
 };

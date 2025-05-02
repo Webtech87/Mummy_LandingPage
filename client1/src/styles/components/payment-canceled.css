@@ -1,0 +1,121 @@
+.payment-canceled-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    background-color: #f8f9fa;
+  }
+  
+  .payment-canceled-card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    animation: slideUp 0.5s ease-out forwards;
+  }
+  
+  .payment-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .payment-title {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .payment-message {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .primary-button, .secondary-button {
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  
+  .primary-button {
+    background-color: #A38200;
+    color: white;
+  }
+  
+  .primary-button:hover {
+    background-color: #8a6e00;
+    transform: translateY(-2px);
+  }
+  
+  .secondary-button {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px solid #ddd;
+  }
+  
+  .secondary-button:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-2px);
+  }
+  
+  .payment-help {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    color: #777;
+  }
+  
+  .contact-link {
+    color: #A38200;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+  
+  .contact-link:hover {
+    text-decoration: underline;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .payment-canceled-card {
+      padding: 2rem 1.5rem;
+    }
+    
+    .payment-title {
+      font-size: 1.5rem;
+    }
+    
+    .payment-message {
+      font-size: 1rem;
+    }
+  }

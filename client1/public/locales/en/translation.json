@@ -440,5 +440,12 @@
     "email": "Please enter a valid email.",
     "subject": "The subject field is required.",
     "acepted": "You must accept the Privacy Policy."
+  },
+  "payment": {
+    "h1": "Payment Canceled",
+    "p": "Your payment was canceled. Don't worry, no amount was charged.",
+    "top_button": "Return to homepage",
+    "boton_button": "Try again",
+    "contact_us": "Need help? Contact us:"
   }
 }

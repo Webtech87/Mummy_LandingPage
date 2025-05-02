@@ -5,7 +5,7 @@ import "../../styles/components/payment-canceled.css";
 
 const PaymentCanceled = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t , i18n} = useTranslation();
   
   useEffect(() => {
     // Certifique-se de que o idioma português seja usado como padrão se nenhum idioma estiver definido
@@ -31,11 +31,10 @@ const PaymentCanceled = () => {
           </svg>
         </div>
         
-        <h1 className="payment-title">{t('Pagamento Cancelado') || 'Pagamento Cancelado'}</h1>
+        <h1 className="payment-title">{t('payment.h1')}</h1>
         
         <p className="payment-message">
-          {t('O seu pagamento foi cancelado. Não se preocupe, nenhum valor foi cobrado.') || 
-           'O seu pagamento foi cancelado. Não se preocupe, nenhum valor foi cobrado.'}
+          {t('payment.p')}
         </p>
         
         <div className="payment-options">
@@ -43,21 +42,20 @@ const PaymentCanceled = () => {
             className="primary-button"
             onClick={() => navigate('/')}
           >
-            {t('Voltar para página inicial') || 'Voltar para página inicial'}
+            {t('payment.top_button')}
           </button>
           
           <button 
             className="secondary-button"
             onClick={() => window.location.href = 'http://localhost:8000/api/v1/payment/process/'}
           >
-            {t('Tentar novamente') || 'Tentar novamente'}
+            {t('payment.boton_button')}
           </button>
         </div>
         
         <div className="payment-help">
           <p>
-            {t('Precisa de ajuda? Entre em contato conosco:') || 
-             'Precisa de ajuda? Entre em contato conosco:'}
+            {t('payment.contact_us')}
           </p>
           <a href="mailto:geral@santiclinic.eu" className="contact-link">
             geral@santiclinic.eu

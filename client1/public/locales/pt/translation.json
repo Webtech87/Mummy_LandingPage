@@ -402,5 +402,35 @@
         "p": "Se tiver alguma dúvida sobre estes Termos e Condições, por favor contacte-nos:"
       }
     }
+  },
+  "cookies": {
+    "top_btn": {
+      "more": "Ver mais",
+      "less": "Ver menos"
+    },
+    "title": "Utilizamos cookies",
+    "p": "Utilizamos cookies e outras tecnologias semelhantes para melhorar a sua experiência no nosso site, personalizar publicidade e recomendar conteúdo do seu interesse.",
+    "lt": {
+      "p": {
+        "text": "Ao continuar navegando, você concorda com a nossa",
+        "link": "Política de Privacidade"
+      },
+      "1": {
+        "bold": "Cookies essenciais",
+        "p": "Necessários para o funcionamento do site"
+      },
+      "2": {
+        "bold": "Cookies analíticos",
+        "p": "Nos ajudam a entender como você usa o site"
+      },
+      "3": {
+        "bold": "Cookies de marketing",
+        "p": "Permitem oferecer conteúdo personalizado"
+      }
+    },
+    "btn": {
+      "accept": "Aceitar",
+      "reject": "Recusar"
+    }
   }
 }

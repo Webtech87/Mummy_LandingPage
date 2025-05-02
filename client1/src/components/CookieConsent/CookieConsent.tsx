@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/components/CookieConsent/CookieConsent.css';
 import { Check, X } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
 interface CookieConsentProps {
   onAccept: () => void;
@@ -37,7 +38,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onDecline }) =>
     setIsVisible(false);
     onDecline();
   };
-
+  const { t } = useTranslation();
   const toggleDetails = () => {
     setIsExpanded(!isExpanded);
   };
@@ -45,36 +46,36 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onDecline }) =>
   if (!isVisible) return null;
 
   return (
+
     <div className="cookie-consent-overlay">
       <div className="cookie-consent-container">
         <div className="cookie-consent-header">
-          <h3>🍪 Utilizamos cookies!</h3>
+          <h3>🍪 {t("cookies.title")}!</h3>
           <button className="cookie-expand-button" onClick={toggleDetails}>
-            {isExpanded ? 'Ver menos' : 'Ver mais'}
+            {isExpanded ? t("cookies.top_btn.less") : t("cookies.top_btn.more")}
           </button>
         </div>
         
         <div className="cookie-consent-content">
           <p>
-            Utilizamos cookies e outras tecnologias semelhantes para melhorar a sua experiência no nosso site,
-            personalizar publicidade e recomendar conteúdo do seu interesse.
+            {t("cookies.p")}
           </p>
           
           {isExpanded && (
             <div className="cookie-details">
               <p>
-                Ao continuar navegando, você concorda com a nossa{' '}
-                <a href="/politica-privacidade" className="privacy-link">Política de Privacidade</a>.
+                {t("cookies.lt.p.text")}{' '}
+                <a href="/politica-privacidade" className="privacy-link">{t("cookies.lt.p.link")}</a>.
               </p>
               <ul className="cookie-types">
                 <li>
-                  <strong>Cookies essenciais:</strong> Necessários para o funcionamento do site
+                  <strong>{t("cookies.lt.1.bold")}:</strong> {t("cookies.lt.1.p")}
                 </li>
                 <li>
-                  <strong>Cookies analíticos:</strong> Nos ajudam a entender como você usa o site
+                  <strong>{t("cookies.lt.2.bold")}:</strong> {t("cookies.lt.2.p")}
                 </li>
                 <li>
-                  <strong>Cookies de marketing:</strong> Permitem oferecer conteúdo personalizado
+                  <strong>{t("cookies.lt.3.bold")}:</strong> {t("cookies.lt.3.p")}
                 </li>
               </ul>
             </div>
@@ -87,14 +88,14 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onDecline }) =>
             onClick={handleDecline}
           >
             <X size={16} />
-            <span>Recusar</span>
+            <span>{t("cookies.btn.reject")}</span>
           </button>
           <button 
             className="cookie-button primary" 
             onClick={handleAccept}
           >
             <Check size={16} />
-            <span>Aceitar</span>
+            <span>{t("cookies.btn.accept")}</span>
           </button>
         </div>
       </div>

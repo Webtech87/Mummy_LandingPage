@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import {useState, useEffect, useRef} from 'react';
 import '../../styles/components/navbar.css';
 import {useTranslation} from "react-i18next";
 
@@ -55,24 +55,27 @@ const Navbar = () => {
 
                 {/* Right side elements */}
                 <div className="navbar-actions">
+
+
                     {/* Language switcher */}
-                    <div className="language-switcher">
-                        <button
-                            className={`lang-btn ${i18n.language === 'pt' ? "active" : ""}`}
-                            onClick={() => handleLanguageChange("pt")}
-                            aria-label="Switch to Portuguese"
-                        >
-                            PT
-                        </button>
-                        <span className="lang-separator">|</span>
-                        <button
-                            className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
-                            onClick={() => handleLanguageChange('en')}
-                            aria-label="Switch to English"
-                        >
-                            EN
-                        </button>
-                    </div>
+<div className="language-switcher">
+    <button
+        className={`lang-btn pt-flag ${i18n.language === 'pt' ? "active" : ""}`}
+        onClick={() => handleLanguageChange("pt")}
+        aria-label="Switch to Portuguese"
+    >
+        PT
+    </button>
+    <span className="lang-separator">|</span>
+    <button
+        className={`lang-btn en-flag ${i18n.language === 'en' ? 'active' : ''}`}
+        onClick={() => handleLanguageChange('en')}
+        aria-label="Switch to English"
+    >
+        EN
+    </button>
+</div>
+
 
                     {/* WhatsApp button */}
                     <a

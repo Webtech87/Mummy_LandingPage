@@ -125,13 +125,13 @@ def process(request):
 
 def payment_completed(request):
     # Redirecionar para o frontend com parâmetro de status
-    frontend_url = "https://mummy-landingpage.onrender.com"  # Ajuste para sua URL do frontend em produção
+    frontend_url = "https://mummy-landingpage-frontend.onrender.com"  # Ajuste para sua URL do frontend em produção
     return redirect(f"{frontend_url}/?status=success")
 
 
 def payment_canceled(request):
     # Redirecionar para o frontend com parâmetro de status
-    frontend_url = "https://mummy-landingpage.onrender.com"  # Ajuste para sua URL do frontend em produção
+    frontend_url = "https://mummy-landingpage-frontend.onrender.com"  # Ajuste para sua URL do frontend em produção
     return redirect(f"{frontend_url}/?status=canceled")
 
 

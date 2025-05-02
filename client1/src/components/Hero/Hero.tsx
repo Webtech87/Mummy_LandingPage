@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/components/hero.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
@@ -62,9 +63,25 @@ function getTimeLeft(targetDate: Date) {
 }
 
 export default function Hero() {
+  const navigate = useNavigate();
   const [targetInfo, setTargetInfo] = useState(getTargetDate);
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
+  const { t } = useTranslation();
+
+  // Verificar se o usuário está retornando de um pagamento
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('status');
+    
+    if (paymentStatus === 'canceled' && localStorage.getItem('paymentStarted')) {
+      // Limpar o estado de pagamento
+      localStorage.removeItem('paymentStarted');
+      
+      // Redirecionar para a página de pagamento cancelado
+      navigate('/payment-canceled');
+    }
+  }, [navigate]);
 
   // Fetch price info from the backend
   useEffect(() => {
@@ -113,6 +130,9 @@ export default function Hero() {
   }, [targetInfo]);
 
   function handleBuy() {
+    // Salvar um item no localStorage para indicar que o usuário iniciou o processo de pagamento
+    localStorage.setItem('paymentStarted', 'true');
+    
     // Redirect to the payment processing URL
     window.location.href = 'https://mummy-landingpage.onrender.com/api/v1/payment/process/';
 
@@ -125,7 +145,7 @@ export default function Hero() {
   const isFirstPhase = serverPriceInfo?.is_first_phase !== undefined 
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
-  const { t } = useTranslation();
+
   return (
     <section className="hero-section" aria-labelledby="main-heading">
       <div className="hero-container">
@@ -145,7 +165,7 @@ export default function Hero() {
                 Mummy DayCare
               </h1>
               <h3 className="hero-tagline">
-               {t("top_img.h3")}
+                {t("top_img.h3")}
               </h3>
             </div>
           </div>

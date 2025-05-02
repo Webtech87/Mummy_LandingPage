@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import AppRoutes from './router/routes';
@@ -10,9 +10,9 @@ import CookieConsent from './components/CookieConsent/CookieConsent'; // Import 
 import './styles/global.css';
 
 function App() {
-  const [cookiesAccepted, setCookiesAccepted] = useState<boolean | null>(
-    localStorage.getItem('cookieConsent') === 'accepted'
-  );
+  const setCookiesAccepted = (value: boolean | null) => {
+    localStorage.setItem('cookieConsent', value ? 'accepted' : 'declined');
+  };
   const { i18n } = useTranslation();
 
   useEffect(() => {

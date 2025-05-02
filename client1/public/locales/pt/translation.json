@@ -432,5 +432,12 @@
       "accept": "Aceitar",
       "reject": "Recusar"
     }
+  },
+  "empty_fields": {
+    "name": "O campo nome é obrigatório.",
+    "phone": "O campo telefone é obrigatório.",
+    "email": "Por favor, insira um email válido.",
+    "subject": "O campo assunto é obrigatório.",
+    "acepted": "Você deve aceitar a Política de Privacidade."
   }
 }

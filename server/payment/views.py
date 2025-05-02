@@ -124,27 +124,15 @@ def process(request):
 
 
 def payment_completed(request):
-    context = {
-        'title': _('Payment completed!'),
-        'success': True,
-        'redirect_url': '/',
-        'msg': _('Payment successfully processed!'),
-        'contact_email': 'roberto.santiago@webtech87.pt',
-    }
-    return JsonResponse(context)
+    # Redirecionar para o frontend com parâmetro de status
+    frontend_url = "https://mummy-landingpage.onrender.com"  # Ajuste para sua URL do frontend em produção
+    return redirect(f"{frontend_url}/?status=success")
 
 
 def payment_canceled(request):
-    context = {
-        'title': _('Payment Canceled'),
-        'success': False,  # Changed to False since payment was canceled
-        'redirect_url': '/',
-        'msg': _('Payment has been canceled!'),
-        'contact_email': 'roberto.santiago@webtech87.pt',
-        'status': 'canceled'
-    }
-
-    return JsonResponse(context)
+    # Redirecionar para o frontend com parâmetro de status
+    frontend_url = "https://mummy-landingpage.onrender.com"  # Ajuste para sua URL do frontend em produção
+    return redirect(f"{frontend_url}/?status=canceled")
 
 
 @csrf_exempt

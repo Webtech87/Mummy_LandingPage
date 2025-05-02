@@ -433,5 +433,12 @@
       "accept": "Accept",
       "reject": "Reject"
     }
+  },
+  "empty_fields": {
+    "name": "The name field is required.",
+    "phone": "The phone field is required.",
+    "email": "Please enter a valid email.",
+    "subject": "The subject field is required.",
+    "acepted": "You must accept the Privacy Policy."
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/components/service-section.css';
 import { useTranslation } from 'react-i18next';
 
@@ -73,11 +74,27 @@ function getTimeLeft(targetDate: Date) {
 }
 
 const ServiceSection: React.FC = () => {
+  const navigate = useNavigate();
   const [targetInfo, setTargetInfo] = useState(getTargetDate);
   const [time, setTime] = useState(() => getTimeLeft(targetInfo.date));
   const [serverPriceInfo, setServerPriceInfo] = useState<PriceInfo | null>(null);
   const [animateSeconds, setAnimateSeconds] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
+  
+  // Verificar se o usuário está retornando de um pagamento
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('status');
+    
+    if (paymentStatus === 'canceled' && localStorage.getItem('paymentStarted')) {
+      // Limpar o estado de pagamento
+      localStorage.removeItem('paymentStarted');
+      
+      // Redirecionar para a página de pagamento cancelado
+      navigate('/payment-canceled');
+    }
+  }, [navigate]);
 
   // Fetch price info from the backend
   useEffect(() => {
@@ -131,6 +148,9 @@ const ServiceSection: React.FC = () => {
 
   // Handle the buy button click - redirect to payment processing
   const handleBuy = () => {
+    // Salvar um item no localStorage para indicar que o usuário iniciou o processo de pagamento
+    localStorage.setItem('paymentStarted', 'true');
+    
     setIsLoading(true);
     
     // Simulate a short delay before redirecting (to show loading effect)
@@ -146,7 +166,6 @@ const ServiceSection: React.FC = () => {
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
 
-  const { t } = useTranslation();
   return (
     <section className="service-section">
       <div className="service-container">

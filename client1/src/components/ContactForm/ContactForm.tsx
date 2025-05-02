@@ -123,23 +123,23 @@ const ContactForm: React.FC = () => {
     const errors: Partial<Record<keyof FormValues, string>> = {};
 
     if (!formValues.name.trim()) {
-      errors.name = 'O campo nome é obrigatório.';
+      errors.name = t("empty_fields.name");
     }
 
     if (!formValues.phone.trim()) {
-      errors.phone = 'O campo telefone é obrigatório.';
+      errors.phone = t("empty_fields.phone");
     }
 
     if (!formValues.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)) {
-      errors.email = 'Por favor, insira um email válido.';
+      errors.email = t("empty_fields.email");
     }
 
     if (!formValues.subject) {
-      errors.subject = 'O campo assunto é obrigatório.';
+      errors.subject = t("empty_fields.subject");
     }
 
     if (!formValues.privacyPolicy) {
-      errors.privacyPolicy = 'Você deve aceitar a Política de Privacidade.';
+      errors.privacyPolicy = t("empty_fields.acepted");
     }
 
     setFormErrors(errors);

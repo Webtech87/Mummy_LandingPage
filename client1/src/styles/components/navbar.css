@@ -83,6 +83,7 @@
   transition: var(--transition);
   position: relative;
   height: 2.2rem;
+  justify-content: space-between; /* Distribui os elementos uniformemente */
 }
 
 .lang-btn {
@@ -97,10 +98,11 @@
   transition: var(--transition);
   position: relative;
   z-index: 2;
+  flex: 1; /* Faz cada botão ocupar o mesmo espaço */
+  text-align: center; /* Centraliza o texto */
 }
 
 .lang-btn.active {
-  background-color: white;
   color: var(--primary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
@@ -113,7 +115,46 @@
   color: rgba(41, 33, 0, 0.3);
   font-weight: 300;
   user-select: none;
-  margin: 0 -2px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px; /* Largura fixa para o separador */
+}
+
+/* Cores das bandeiras */
+.lang-btn.pt-flag.active {
+  background: linear-gradient(135deg, 
+    #006600 0%, #006600 33.33%, 
+    #ff0000 33.33%, #ff0000 66.66%, 
+    #006600 66.66%, #006600 100%);
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.lang-btn.en-flag.active {
+  background: linear-gradient(135deg, 
+    #00247D 0%, #00247D 33.33%, 
+    #CF142B 33.33%, #CF142B 66.66%, 
+    #00247D 66.66%, #00247D 100%);
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover states para os botões não ativos */
+.lang-btn.pt-flag:hover:not(.active) {
+  background: linear-gradient(135deg, 
+    rgba(0, 102, 0, 0.2) 0%, rgba(0, 102, 0, 0.2) 33.33%, 
+    rgba(255, 0, 0, 0.2) 33.33%, rgba(255, 0, 0, 0.2) 66.66%, 
+    rgba(0, 102, 0, 0.2) 66.66%, rgba(0, 102, 0, 0.2) 100%);
+}
+
+.lang-btn.en-flag:hover:not(.active) {
+  background: linear-gradient(135deg, 
+    rgba(0, 36, 125, 0.2) 0%, rgba(0, 36, 125, 0.2) 33.33%, 
+    rgba(207, 20, 43, 0.2) 33.33%, rgba(207, 20, 43, 0.2) 66.66%, 
+    rgba(0, 36, 125, 0.2) 66.66%, rgba(0, 36, 125, 0.2) 100%);
 }
 
 /* WhatsApp button */
@@ -142,7 +183,7 @@
   outline: none;
 }
 
-/* Mobile styles */
+/* Media query atualizado para melhor responsividade */
 @media (max-width: 768px) {
   .navbar-container {
     padding: 0 1rem;
@@ -160,43 +201,6 @@
     padding: 0.6rem;
   }
   
-  .lang-btn {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.8rem;
-    margin: 0;
-  }
-  
-  .lang-separator {
-    margin: 0;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  
-  .navbar-whatsapp-button:hover,
-  .navbar-whatsapp-button:focus {
-    background-color: rgb(34, 189, 34);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(37, 211, 102, 0.25);
-    outline: none;
-  }
-}
-
-/* Focus styles for accessibility */
-.lang-btn:focus-visible,
-.navbar-whatsapp-button:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-
-/* Media query atualizado para melhor responsividade */
-@media (max-width: 768px) {
   .language-switcher {
     height: 2rem;
     padding: 0.2rem;
@@ -216,5 +220,24 @@
   .lang-btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
+  }
+}
+
+/* Focus styles for accessibility */
+.lang-btn:focus-visible,
+.navbar-whatsapp-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

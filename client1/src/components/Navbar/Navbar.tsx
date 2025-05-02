@@ -1,8 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import '../../styles/components/navbar.css';
 import {useTranslation} from "react-i18next";
-import {changeLanguage} from "i18next";
-
+import i18n from "i18next";
 
 // WhatsApp icon
 const WhatsAppIcon = () => (
@@ -13,13 +12,18 @@ const WhatsAppIcon = () => (
     </svg>
 );
 
-
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [language, setLanguage] = useState('pt'); // Default language is Portugues
     const navbarRef = useRef<HTMLElement>(null);
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
+        // Verifica se há um idioma salvo no localStorage ao montar o componente
+        const savedLanguage = localStorage.getItem("i18nextLng");
+        if (savedLanguage && i18n.language !== savedLanguage) {
+            i18n.changeLanguage(savedLanguage);
+        }
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 10);
         };
@@ -29,14 +33,14 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [i18n]);
 
-    const switchLanguage = (lang: string) => {
-        setLanguage(lang);
-        // Here you would implement your language switching logic
-        console.log(`Switched to ${lang}`);
+    // Função personalizada para garantir persistência do idioma
+    const handleLanguageChange = (lang: string) => {
+        i18n.changeLanguage(lang);
+        localStorage.setItem("i18nextLng", lang);
     };
-    const {t, i18n} = useTranslation();
+
     return (
         <nav
             ref={navbarRef}
@@ -54,18 +58,17 @@ const Navbar = () => {
                 <div className="navbar-actions">
                     {/* Language switcher */}
                     <div className="language-switcher">
-
                         <button
-                            className={i18n.language === 'pt' ? "active" : ""}
-                            onClick={() => changeLanguage("pt")}
+                            className={`lang-btn ${i18n.language === 'pt' ? "active" : ""}`}
+                            onClick={() => handleLanguageChange("pt")}
                             aria-label="Switch to Portuguese"
                         >
                             PT
                         </button>
                         <span className="lang-separator">|</span>
                         <button
-                            className={i18n.language === 'en' ? 'active' : ''}
-                            onClick={() => changeLanguage('en')}
+                            className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                            onClick={() => handleLanguageChange('en')}
                             aria-label="Switch to English"
                         >
                             EN

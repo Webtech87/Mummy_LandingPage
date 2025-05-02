@@ -73,15 +73,16 @@
   gap: 1.5rem;
 }
 
-/* Language switcher */
+/* Language switcher - atualizado */
 .language-switcher {
   display: flex;
   align-items: center;
-  justify-content: center;
   background-color: rgba(163, 130, 0, 0.08);
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   padding: 0.25rem;
   transition: var(--transition);
+  position: relative;
+  height: 2.2rem;
 }
 
 .lang-btn {
@@ -90,16 +91,18 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-color);
-  padding: 0.4rem 0.7rem;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
-  border-radius: 1.2rem;
+  border-radius: 1.5rem;
   transition: var(--transition);
+  position: relative;
+  z-index: 2;
 }
 
 .lang-btn.active {
   background-color: white;
   color: var(--primary-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .lang-btn:hover:not(.active) {
@@ -110,10 +113,7 @@
   color: rgba(41, 33, 0, 0.3);
   font-weight: 300;
   user-select: none;
-  padding: 0 2px;
-  display: flex;
-  align-items: center;
-  margin-left: 20%;
+  margin: 0 -2px;
 }
 
 /* WhatsApp button */
@@ -192,4 +192,29 @@
 .navbar-whatsapp-button:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
+}
+
+
+/* Media query atualizado para melhor responsividade */
+@media (max-width: 768px) {
+  .language-switcher {
+    height: 2rem;
+    padding: 0.2rem;
+  }
+  
+  .lang-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-switcher {
+    height: 1.8rem;
+  }
+  
+  .lang-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
 }

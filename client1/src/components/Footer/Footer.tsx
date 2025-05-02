@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../styles/components/footer.css';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Social media icons
 const InstagramIcon = () => (
@@ -46,7 +46,16 @@ const WhatsAppIcon = () => (
 );
 
 const Footer: React.FC = () => {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
+    
+    useEffect(() => {
+        // Verifica se há um idioma salvo no localStorage ao montar o componente
+        const savedLanguage = localStorage.getItem("i18nextLng");
+        if (savedLanguage && i18n.language !== savedLanguage) {
+            i18n.changeLanguage(savedLanguage);
+        }
+    }, [i18n]);
+    
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -95,19 +104,21 @@ const Footer: React.FC = () => {
                             <span className="contact-icon"><LocationIcon/></span>
                             <span className="contact-text">Praceta Agostinho, 8005-147 Faro</span>
                         </div>
-
                     </div>
-
-
                 </div>
 
                 {/* Legal Links */}
                 <div className="footer-legal">
                     <h3 className="footer-heading">{t("footer.roles.title")}</h3>
                     <ul className="footer-links">
-                        <li><a href="/politica-privacidade">{t("footer.roles.lt.0")}</a></li>
-                        <li><a href="/termos-condicoes">{t("footer.roles.lt.1")}</a></li>
-
+                        <li><a href="/politica-privacidade" onClick={(e) => {
+                            // Garante que o idioma atual seja mantido ao navegar
+                            localStorage.setItem("i18nextLng", i18n.language);
+                        }}>{t("footer.roles.lt.0")}</a></li>
+                        <li><a href="/termos-condicoes" onClick={(e) => {
+                            // Garante que o idioma atual seja mantido ao navegar
+                            localStorage.setItem("i18nextLng", i18n.language);
+                        }}>{t("footer.roles.lt.1")}</a></li>
                     </ul>
                 </div>
             </div>

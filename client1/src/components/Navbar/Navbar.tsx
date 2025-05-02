@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import '../../styles/components/navbar.css';
 import {useTranslation} from "react-i18next";
-import i18n from "i18next";
 
 // WhatsApp icon
 const WhatsAppIcon = () => (
@@ -15,7 +14,7 @@ const WhatsAppIcon = () => (
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const navbarRef = useRef<HTMLElement>(null);
-    const {t, i18n} = useTranslation();
+    const {i18n} = useTranslation();
 
     useEffect(() => {
         // Verifica se há um idioma salvo no localStorage ao montar o componente

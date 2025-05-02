@@ -104,11 +104,11 @@ const Footer: React.FC = () => {
                 <div className="footer-legal">
                     <h3 className="footer-heading">{t("footer.roles.title")}</h3>
                     <ul className="footer-links">
-                        <li><a href="/politica-privacidade" onClick={(e) => {
+                        <li><a href="/politica-privacidade" onClick={() => {
                             // Garante que o idioma atual seja mantido ao navegar
                             localStorage.setItem("i18nextLng", i18n.language);
                         }}>{t("footer.roles.lt.0")}</a></li>
-                        <li><a href="/termos-condicoes" onClick={(e) => {
+                        <li><a href="/termos-condicoes" onClick={() => {
                             // Garante que o idioma atual seja mantido ao navegar
                             localStorage.setItem("i18nextLng", i18n.language);
                         }}>{t("footer.roles.lt.1")}</a></li>

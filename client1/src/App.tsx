@@ -10,9 +10,6 @@ import { useTranslation } from 'react-i18next';
 import './styles/global.css';
 
 function App() {
-  const [cookiesAccepted, setCookiesAccepted] = useState<boolean | null>(
-    localStorage.getItem('cookieConsent') === 'accepted'
-  );
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -22,18 +19,6 @@ function App() {
       i18n.changeLanguage(savedLanguage);
     }
   }, [i18n]);
-
-  const handleCookieAccept = () => {
-    setCookiesAccepted(true);
-    // Here you could initialize analytics or other cookie-dependent services
-    console.log('Cookies accepted');
-  };
-
-  const handleCookieDecline = () => {
-    setCookiesAccepted(false);
-    // Here you could disable any cookie-dependent features
-    console.log('Cookies declined');
-  };
 
   return (
     <BrowserRouter>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../styles/components/hero.css";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 // Interface for the price information from the backend
 interface PriceInfo {
@@ -124,7 +125,7 @@ export default function Hero() {
   const isFirstPhase = serverPriceInfo?.is_first_phase !== undefined 
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
-
+  const { t } = useTranslation();
   return (
     <section className="hero-section" aria-labelledby="main-heading">
       <div className="hero-container">
@@ -138,13 +139,13 @@ export default function Hero() {
           <div className="hero-overlay">
             <div className="hero-text-content" tabIndex={0}>
               <h2 className="hero-subtitle">
-                Queres ser a primeira a usufruir dos novos serviços da Santiclinic?
+                {t("top_img.h2.0")}?
               </h2>
               <h1 id="main-heading" className="hero-title">
                 Mummy DayCare
               </h1>
               <h3 className="hero-tagline">
-                O presente perfeito para o Dia das Mães
+               {t("top_img.h3")}
               </h3>
             </div>
           </div>
@@ -152,16 +153,16 @@ export default function Hero() {
 
         <aside className="hero-cta-container" aria-label="Oferta especial do Mummy Day Care">
           <h2 className="hero-cta-heading">
-            Garanta Seu Mummy DayCare com Oferta Especial!
+            {t("top_img.h2.1")}
           </h2>
 
           <div className="offer-card" role="region" aria-label="Oferta especial">
             <div className="offer-header">
-              <span className="offer-title">Promoção Exclusiva</span>
+              <span className="offer-title">{t("top_ptomotion.title")}</span>
             </div>
 
             <div className="offer-price-container">
-              <span className="offer-price-label">Valor Promocional:</span>
+              <span className="offer-price-label">{t("top_ptomotion.prom_price")}:</span>
               <span className="offer-price-value">
                 {currentPrice}
               </span>
@@ -169,18 +170,18 @@ export default function Hero() {
 
             <p className="offer-deadline">
               {isFirstPhase 
-                ? "Oferta válida até 5 de maio" 
-                : "Oferta válida até 12 de maio"}
+                ? t("top_ptomotion.validation.0")
+                : t("top_ptomotion.validation.1")}
             </p>
 
             <div className="countdown-timer" aria-live="polite" aria-label="Contagem regressiva até o fim da oferta">
               <div className="timer-segment">
                 <span className="timer-number">{time.days}</span>
-                <span className="timer-label">Dias</span>
+                <span className="timer-label">{t("top_ptomotion.cont_down.days")}</span>
               </div>
               <div className="timer-segment">
                 <span className="timer-number">{time.hours}</span>
-                <span className="timer-label">Horas</span>
+                <span className="timer-label">{t("top_ptomotion.cont_down.hours")}</span>
               </div>
               <div className="timer-segment">
                 <span className="timer-number">{time.minutes}</span>
@@ -195,14 +196,14 @@ export default function Hero() {
             <div className="offer-warning" aria-live="polite">
               {isFirstPhase ? (
                 <>
-                  <p className="warning-title">Atenção: Prazo Limitado!</p>
-                  <p className="warning-period">Após 5 de maio até 12 de maio</p>
+                  <p className="warning-title">{t('top_ptomotion.atention.0.0')}</p>
+                  <p className="warning-period">{t("top_ptomotion.atention.0.1")}</p>
                   <span className="regular-price">{nextPrice}</span>
                 </>
               ) : (
                 <>
-                  <p className="warning-title">Última Oportunidade!</p>
-                  <p className="warning-period">Promoção encerra em 12 de maio</p>
+                  <p className="warning-title">{t("top_ptomotion.atention")}</p>
+                  <p className="warning-period">{t("top_ptomotion.atention.1.1")}</p>
                   <span className="regular-price">{nextPrice}</span>
                 </>
               )}
@@ -215,8 +216,8 @@ export default function Hero() {
               type="button"
             >
               {isFirstPhase 
-                ? "RESERVAR AGORA COM DESCONTO ESPECIAL" 
-                : "RESERVAR COM DESCONTO LIMITADO"}
+                ? t("top_ptomotion.button.0")
+                : t("top_ptomotion.button.1")}
             </button>
           </div>
         </aside>

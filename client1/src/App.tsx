@@ -5,7 +5,7 @@ import MainLayout from './layouts/MainLayout';
 import AppRoutes from './router/routes';
 import ScrollToTop from './components/ScrollToTop';
 import FadeIn from './components/FadeIn';
-import CookieConsent from './components/CookieConsent/CookieConsent';
+
 import './styles/global.css';
 
 function App() {
@@ -33,11 +33,6 @@ function App() {
           <AppRoutes />
         </MainLayout>
       </FadeIn>
-      
-      <CookieConsent 
-        onAccept={handleCookieAccept}
-        onDecline={handleCookieDecline}
-      />
     </BrowserRouter>
   );
 }

@@ -177,9 +177,13 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .navbar-whatsapp-button:hover,
+  .navbar-whatsapp-button:focus {
+    background-color: rgb(34, 189, 34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 211, 102, 0.25);
+    outline: none;
   }
 }
 

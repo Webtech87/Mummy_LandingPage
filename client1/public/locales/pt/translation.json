@@ -1,0 +1,406 @@
+{
+  "top_img": {
+    "h2": [
+      "Queres ser a primeira a usufruir dos novos serviços da Santiclinic",
+      "Garanta Seu Mummy DayCare com Oferta Especial!"
+    ],
+    "h3": "O presente perfeito para o Dia das Mães"
+  },
+  "top_ptomotion": {
+    "title": "Promoção Exclusiva",
+    "prom_price": "Valor Promocional",
+    "validation": [
+      "Oferta válida até 5 de maio",
+      "Oferta válida até 12 de maio"
+    ],
+    "cont_down": {
+      "days": "Dias",
+      "hours": "Horas"
+    },
+    "atention": [
+      [
+        "Atenção: Prazo Limitado!",
+        "Após 5 de maio até 12 de maio"
+      ],
+      [
+        "Última Oportunidade!",
+        "Promoção encerra em 12 de maio"
+      ]
+    ],
+    "button": [
+      "Reservar agora o Mummy Day Care com desconto especial",
+      "RESERVAR COM DESCONTO LIMITADO"
+    ]
+  },
+  "video_area": "Protocolo exclusivo Dia da Mãe Laser CO2| Skin Booster| Botox | Massagem | Cuidados faciais e capilares...",
+  "description_8_in_1": {
+    "title": "8 Tratamentos em Um Único Dia",
+    "p": [
+      "Ser mulher já é extraordinário. Ser mãe, então, é divino. As mães cuidam, amam, equilibram o mundo. E muitas vezes, esquecem-se de si próprias.",
+      [
+        "Na",
+        "queremos inverter esse papel nem que seja por um dia ou por uma semana."
+      ],
+      [
+        "Criámos o protocolo",
+        "para celebrar todas as mães com cuidado, descanso e beleza."
+      ]
+    ],
+    "pacage_desc": {
+      "title": "Tudo o que está incluído no",
+      "procedures": [
+        "Laser CO2 Resurfacing facial",
+        "Mesoterapia Capilar",
+        "Limpeza de Pele Profunda",
+        "Peeling de Diamante",
+        "Skin Booste",
+        "Botox",
+        "Massagem de relaxamento",
+        "Radiofrequência Corporal"
+      ]
+    }
+  },
+  "bot_ptomotion": {
+    "p": "Vagas limitadas",
+    "price_esp": "Valor especial",
+    "validation": [
+      "Somente até 5 de maio",
+      "Somente até 12 de maio"
+    ],
+    "contdwn": "A oferta expira em:",
+    "esp_prom": "Oferta Especial",
+    "atention": {
+      "header": [
+        "Oferta Especial",
+        "Última Chance"
+      ],
+      "title": [
+        "Atenção",
+        "Última Oportunidade"
+      ],
+      "p": [
+        "De 6 à 12 de Maio",
+        "Promoção encerra em 12 de Maio"
+      ]
+    },
+    "buy": [
+      "QUERO COMPRAR AGORA",
+      "APROVEITAR ÚLTIMA OFERTA"
+    ]
+  },
+  "contact_form": {
+    "title": "Fale Conosco",
+    "p": "Por favor, preencha o formulário abaixo para entrar em contacto com a nossa equipa.",
+    "fields": {
+      "name": {
+        "title": "Nome",
+        "ph": "Seu nome completo"
+      },
+      "phone": "Telefone",
+      "subject": {
+        "title": "Assunto",
+        "options": [
+          "Selecione um assunto",
+          "Informação",
+          "Procedimentos",
+          "Preços",
+          "Outro"
+        ]
+      },
+      "msg": {
+        "title": "Mensagem",
+        "ph": "Escreva sua mensagem aqui..."
+      },
+      "acept_p_t": [
+        "Li e aceito a ",
+        "Política de Privacidade"
+      ]
+    },
+    "sbm_button": "ENVIAR MENSAGEM",
+    "msg": {
+      "success": "Mensagem enviada com sucesso! A nossa equipa entrará em contato em breve.",
+      "error": "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente."
+    }
+  },
+  "footer": {
+    "sc_p": "Tratamentos de beleza personalizados para mulheres que merecem cuidado especial.",
+    "nav": {
+      "title": "Navegação",
+      "lt": [
+        "Serviços",
+        "Sobre Nós"
+      ]
+    },
+    "contact": "Contato",
+    "roles": {
+      "title": "Legal",
+      "lt": [
+        "Política de Privacidade",
+        "Termos e Condições"
+      ]
+    }
+  },
+  "footer_btn": [
+    "Todos os direitos reservados.",
+    "Desenvolvido com",
+    " por Equipa"
+  ],
+  "pp": {
+    "title": "Política de Privacidade",
+    "btn": "Voltar para a página inicial",
+    "last_update": "Última atualização: 27 de abril de 2025",
+    "lt": {
+      "1": {
+        "title": "Introdução",
+        "p": [
+          "Bem-vindo à Política de Privacidade da Santiclinic. Agradecemos por utilizar nossos serviços e confiança. Respeitamos a sua privacidade e estamos comprometidos em proteger seus dados pessoais.",
+          "Esta política de privacidade descreve como recolhemos, utilizamos e protegemos as suas informações quando utiliza o nosso website e os nossos serviços, incluindo o serviço Mummy DayCare."
+        ]
+      },
+      "2": {
+        "title": "Dados que Recolhemos",
+        "p": "Podemos recolher os seguintes tipos de informações",
+        "lt": {
+          "1": {
+            "title": "Informações de Identificação Pessoal: ",
+            "p": "Nome completo, endereço, número de telefone, endereço de e-mail."
+          },
+          "2": {
+            "title": "Informações de Saúde:",
+            "p": "Histórico médico relevante para os nossos serviços."
+          },
+          "3": {
+            "title": "Informações de Pagamento: ",
+            "p": "Detalhes de cartão de crédito/débito ou outras informações financeiras necessárias para processar pagamentos."
+          },
+          "4": {
+            "title": "Informações Técnicas: ",
+            "p": "Endereço IP, tipo de navegador, provedor de serviços de Internet, páginas de referência/saída, sistema operacional."
+          },
+          "5": {
+            "title": "Informações de Utilização: ",
+            "p": "Como interage com o nosso website, incluindo as páginas visitadas, tempo gasto no site, cliques."
+          }
+        }
+      },
+      "3": {
+        "title": "Como Utilizamos os Seus Dados",
+        "p": "Utilizamos os seus dados pessoais para os seguintes propósitos:",
+        "lt": [
+          "Fornecer e gerir os nossos serviços, incluindo o serviço Mummy DayCare",
+          "Processar pagamentos e gerir a sua conta",
+          "Enviar comunicações sobre os nossos serviços",
+          "Responder às suas perguntas e solicitações",
+          "Melhorar o nosso website e os nossos serviços",
+          "Cumprir obrigações legais",
+          "Para fins de pesquisa e análise"
+        ]
+      },
+      "4": {
+        "title": "Base Legal para o Processamento de Dados",
+        "p": "Processamos os seus dados pessoais apenas quando temos uma base legal válida para o fazer, que pode incluir:",
+        "lt": [
+          "O seu consentimento",
+          "A necessidade de executar um contrato consigo",
+          "Cumprimento das nossas obrigações legais",
+          "Os nossos interesses legítimos (desde que não prejudiquem os seus direitos)",
+          "Para proteger os seus interesses vitais ou os de outra pessoa"
+        ]
+      },
+      "5": {
+        "title": "Partilha de Dados Pessoais",
+        "p": [
+          "Podemos partilhar os seus dados pessoais com terceiros nas seguintes circunstâncias:",
+          "Não vendemos os seus dados pessoais a terceiros."
+        ],
+        "lt": [
+          "Com prestadores de serviços que nos ajudam a fornecer os nossos serviços",
+          "Com parceiros de negócios com quem oferecemos produtos ou serviços em conjunto",
+          "Quando exigido por lei ou por autoridades governamentais",
+          "Para proteger os nossos direitos, propriedade ou segurança, ou os de outros",
+          "No caso de uma fusão, venda ou reorganização do nosso negócio"
+        ]
+      },
+      "6": {
+        "title": "Segurança de Dados",
+        "p": "Implementamos medidas de segurança apropriadas para proteger os seus dados pessoais contra acesso não autorizado, alteração, divulgação ou destruição. Estas medidas incluem:",
+        "lt": [
+          "Encriptação de dados sensíveis",
+          "Firewalls e sistemas de deteção de intrusões",
+          "Acesso restrito a dados pessoais",
+          "Monitorização regular dos nossos sistemas",
+          "Formação em segurança para o nosso pessoal"
+        ]
+      },
+      "7": {
+        "title": "Os Seus Direitos",
+        "p": [
+          "Ao abrigo do Regulamento Geral de Proteção de Dados (RGPD) e outras leis de proteção de dados aplicáveis, tem os seguintes direitos:",
+          "Para exercer qualquer um destes direitos, por favor contacte-nos através do email "
+        ],
+        "lt": [
+          "Direito de acesso aos seus dados pessoais",
+          "Direito de retificação de dados inexatos",
+          "Direito de apagamento (direito a ser esquecido)",
+          "Direito à limitação do processamento",
+          "Direito à portabilidade dos dados",
+          "Direito de oposição ao processamento",
+          "Direito de não estar sujeito a decisões automatizadas, incluindo a definição de perfis"
+        ]
+      },
+      "8": {
+        "title": "Cookies e Tecnologias Semelhantes",
+        "p": "Utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência no nosso website, analisar o tráfego e personalizar o conteúdo. Pode gerir as suas preferências de cookies através das definições do seu navegador."
+      },
+      "9": {
+        "title": "Período de Conservação de Dados",
+        "p": "Conservamos os seus dados pessoais apenas pelo tempo necessário para cumprir as finalidades para as quais foram recolhidos, incluindo para fins de cumprimento de requisitos legais, contabilísticos ou de relatórios."
+      },
+      "10": {
+        "title": "Transferências Internacionais de Dados",
+        "p": "Os seus dados pessoais podem ser transferidos para, e processados em, países fora do Espaço Económico Europeu (EEE). Nestes casos, tomaremos medidas para garantir que os seus dados recebem um nível de proteção adequado."
+      },
+      "11": {
+        "title": "Alterações a Esta Política de Privacidade",
+        "p": "Podemos atualizar esta política de privacidade periodicamente para refletir alterações nas nossas práticas de privacidade. Publicaremos a política de privacidade atualizada no nosso website e, se as alterações forem significativas, notificá-lo-emos por email ou através de um aviso no nosso website."
+      },
+      "12": {
+        "title": "Contacte-nos",
+        "p": "Se tiver alguma pergunta sobre esta política de privacidade ou sobre como tratamos os seus dados pessoais, por favor contacte-nos:"
+      }
+    }
+  },
+  "tc": {
+    "title": "Termos e Condições",
+    "btn": "Voltar para a página inicial",
+    "last_update": "Última atualização: 27 de abril de 2025",
+    "lt": {
+      "1": {
+        "title": "Introdução",
+        "p": "Bem-vindo aos Termos e Condições da Santiclinic. Ao aceder e utilizar os nossos serviços, incluindo o nosso website e o serviço Mummy DayCare, concorda com estes termos e condições na íntegra. Se não concordar com estes termos e condições ou qualquer parte destes, não deve utilizar os nossos serviços."
+      },
+      "2": {
+        "title": "Definições",
+        "p": "Nestes termos e condições, os seguintes termos têm os seguintes significados:",
+        "lt": {
+          "1": {
+            "lt": [
+              "Santiclinic",
+              "nós",
+              "nos"
+            ],
+            "p": "refere-se à clínica Santiclinic."
+          },
+          "2": {
+            "lt": [
+              "Serviço",
+              "Serviços"
+            ],
+            "p": "refere-se a todos os serviços oferecidos pela Santiclinic, incluindo, mas não limitado a, tratamentos estéticos, consultas, o serviço Mummy DayCare, e o acesso e utilização do website."
+          },
+          "3": {
+            "lt": [
+              "Utilizador",
+              "Cliente",
+              "você"
+            ],
+            "p": "refere-se a qualquer pessoa que aceda ao website ou utilize os serviços da Santiclinic."
+          },
+          "4": {
+            "lt": [
+              "Website"
+            ],
+            "p": "refere-se ao website da Santiclinic acessível em www.santiclinic.pt."
+          },
+          "5": {
+            "lt": [
+              "Mummy DayCare"
+            ],
+            "p": "refere-se ao serviço específico oferecido pela Santiclinic para cuidados maternos."
+          }
+        }
+      },
+      "3": {
+        "title": "Prestação de Serviços",
+        "p": [
+          "A Santiclinic oferece uma variedade de serviços de cuidados de saúde e estética, incluindo o serviço Mummy DayCare. Todos os serviços são prestados por profissionais qualificados de acordo com as normas e regulamentos aplicáveis em Portugal.",
+          "Reservamo-nos o direito de recusar a prestação de serviços a qualquer utilizador por qualquer motivo, incluindo, mas não limitado a, comportamento inadequado, não comparecimento a consultas anteriores sem aviso prévio, ou condições médicas que contraindiquem os nossos tratamentos."
+        ]
+      },
+      "4": {
+        "title": "Reservas e Cancelamentos",
+        "p": [
+          "As reservas para os nossos serviços, incluindo o Mummy DayCare, podem ser feitas através do nosso website, por telefone, ou presencialmente na nossa clínica.",
+          "Política de Cancelamento:"
+        ],
+        "lt": [
+          "Os cancelamentos devem ser feitos com pelo menos 24 horas de antecedência.",
+          "Cancelamentos com menos de 24 horas de antecedência ou não comparecimento podem estar sujeitos a uma taxa de cancelamento de 50% do valor do serviço agendado.",
+          "Em caso de emergência ou circunstâncias atenuantes, a taxa de cancelamento pode ser dispensada a critério da Santiclinic."
+        ]
+      },
+      "5": {
+        "title": "Pagamentos",
+        "p": [
+          "Todos os preços dos nossos serviços estão indicados em euros e incluem IVA à taxa legal em vigor.",
+          "Aceitamos pagamentos através dos seguintes métodos:",
+          "Para o serviço Mummy DayCare, pode ser solicitado um depósito no momento da reserva para garantir a sua vaga. Este depósito é reembolsável apenas em caso de cancelamento com pelo menos 48 horas de antecedência."
+        ],
+        "lt": [
+          "Cartão de crédito/débito",
+          "Transferência bancária",
+          "Dinheiro (apenas para pagamentos presenciais)",
+          "Sistemas de pagamento online seguros"
+        ]
+      },
+      "6": {
+        "title": "Pacotes Promocionais",
+        "p": [
+          "Os pacotes promocionais, incluindo ofertas especiais para o Mummy DayCare, estão sujeitos a disponibilidade e podem ser limitados no tempo. As promoções não são cumulativas com outras ofertas, a menos que especificamente indicado.",
+          "Os vouchers promocionais têm um período de validade específico e devem ser utilizados dentro desse período. Não são reembolsáveis nem transferíveis."
+        ]
+      },
+      "7": {
+        "title": "Uso do Website",
+        "p": [
+          "O conteúdo do nosso website é apenas para informação geral e não constitui aconselhamento médico. Embora nos esforcemos para manter as informações atualizadas e corretas, não fazemos representações ou garantias de qualquer tipo, expressas ou implícitas, sobre a integridade, precisão, confiabilidade, adequação ou disponibilidade do website ou das informações, produtos, serviços, ou imagens relacionadas contidas no website.",
+          "O uso de qualquer informação ou materiais no nosso website é inteiramente por sua conta e risco, pelo que não seremos responsáveis. É da sua responsabilidade garantir que quaisquer produtos, serviços ou informações disponíveis através do nosso website atendem aos seus requisitos específicos."
+        ]
+      },
+      "8": {
+        "title": "Propriedade Intelectual",
+        "p": [
+          "Todo o conteúdo do nosso website, incluindo, mas não limitado a, textos, gráficos, logótipos, ícones, imagens, clipes de áudio, downloads digitais, compilações de dados e software, é propriedade da Santiclinic ou dos nossos fornecedores de conteúdo e está protegido pelas leis de direitos autorais portuguesas e internacionais.",
+          "A reprodução, modificação, distribuição ou republicação de materiais do nosso website para qualquer fim sem o nosso consentimento prévio por escrito é estritamente proibida."
+        ]
+      },
+      "9": {
+        "title": "Limitação de Responsabilidade",
+        "p": "Em nenhuma circunstância seremos responsáveis por quaisquer danos diretos, indiretos, incidentais, consequenciais, especiais ou exemplares decorrentes ou de qualquer forma relacionados com:",
+        "lt": [
+          "O uso ou incapacidade de usar o nosso website ou serviços",
+          "Acesso não autorizado ou alteração das suas transmissões ou dados",
+          "Declarações ou conduta de terceiros no nosso website",
+          "Resultados de tratamentos que possam variar de pessoa para pessoa",
+          "Quaisquer outras questões relacionadas com o nosso website ou serviços"
+        ]
+      },
+      "10": {
+        "title": "Indemnização",
+        "p": "Concorda em indemnizar, defender e isentar a Santiclinic e os seus funcionários, diretores, agentes, contratados e licenciadores de e contra quaisquer reclamações, responsabilidades, danos, perdas e despesas, incluindo, sem limitação, honorários e custos legais razoáveis, decorrentes de qualquer forma ou relacionados com o seu acesso ou uso do nosso website ou serviços, ou a sua violação destes Termos e Condições."
+      },
+      "11": {
+        "title": "Lei Aplicável",
+        "p": "Estes Termos e Condições são regidos e interpretados de acordo com as leis de Portugal, e quaisquer disputas relacionadas com estes termos e condições estarão sujeitas à jurisdição exclusiva dos tribunais portugueses."
+      },
+      "12": {
+        "title": "Alterações aos Termos e Condições",
+        "p": "Reservamo-nos o direito de modificar estes termos e condições a qualquer momento. As alterações entrarão em vigor imediatamente após a publicação dos termos e condições atualizados no nosso website. O seu uso continuado do website ou dos nossos serviços após a publicação de quaisquer alterações aos termos e condições constitui a sua aceitação dessas alterações."
+      },
+      "13": {
+        "title": "Contacto",
+        "p": "Se tiver alguma dúvida sobre estes Termos e Condições, por favor contacte-nos:"
+      }
+    }
+  }
+}

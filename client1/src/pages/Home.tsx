@@ -3,11 +3,13 @@ import Hero from '../components/Hero/Hero';
 import VideoSection from '../components/VideoSection/VideoSection';
 import ServiceSection from '../components/ServiceSection/ServiceSection';
 import ContactForm from '../components/ContactForm/ContactForm';
+import { useTranslation } from "react-i18next";
 
 import '../styles/pages/home.css'; // Use page-specific styles
 
 const Home: React.FC = () => {
-  return (
+  const { t } = useTranslation();
+    return (
     <div className="home-page">
       <Hero />
       
@@ -15,7 +17,7 @@ const Home: React.FC = () => {
         videoSrc="/videos/clinic-tour.mp4"  // Update with your actual video path
         posterSrc="/images/video-thumbnail.jpg"  // Update with your actual thumbnail image
         title="Mummy DayCare" 
-        description="Protocolo exclusivo Dia da Mãe Laser CO2| Skin Booster| Botox | Massagem | Cuidados faciais e capilares..."
+        description={t("video_area")}
       />
       
       <ServiceSection />

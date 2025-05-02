@@ -12,6 +12,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+'''
 print("Verificando credenciais...")
 try:
     with open(settings.CREDENTIALS_FILE) as f:
@@ -20,6 +21,8 @@ try:
         print(f"Email da conta de serviço: {service_account_email}")
 except Exception as e:
     print(f"Erro ao ler credenciais: {str(e)}")
+
+'''
 
 
 def get_date_today():

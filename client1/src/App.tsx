@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
@@ -6,6 +5,7 @@ import AppRoutes from './router/routes';
 import ScrollToTop from './components/ScrollToTop';
 import FadeIn from './components/FadeIn';
 import { useTranslation } from 'react-i18next';
+import CookieConsent from './components/CookieConsent/CookieConsent'; // Import the component
 
 import './styles/global.css';
 
@@ -25,13 +25,11 @@ function App() {
 
   const handleCookieAccept = () => {
     setCookiesAccepted(true);
-    // Here you could initialize analytics or other cookie-dependent services
     console.log('Cookies accepted');
   };
 
   const handleCookieDecline = () => {
     setCookiesAccepted(false);
-    // Here you could disable any cookie-dependent features
     console.log('Cookies declined');
   };
 
@@ -41,6 +39,12 @@ function App() {
       <FadeIn duration={1500} delay={300}>
         <MainLayout>
           <AppRoutes />
+          
+          {/* Add the CookieConsent component */}
+          <CookieConsent 
+            onAccept={handleCookieAccept}
+            onDecline={handleCookieDecline}
+          />
         </MainLayout>
       </FadeIn>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/components/contact-form.css';
 import { useTranslation} from "react-i18next";
 
@@ -47,6 +47,29 @@ const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formStructure, setFormStructure] = useState<FormStructure | null>(null);
+  
+  // Refs para as mensagens de sucesso e erro
+  const successMessageRef = useRef<HTMLDivElement>(null);
+  const errorMessageRef = useRef<HTMLDivElement>(null);
+
+  // Efeito para rolar até a mensagem quando o status do formulário muda
+  useEffect(() => {
+    if (formStatus === 'success' && successMessageRef.current) {
+      // Rolagem suave até a mensagem de sucesso
+      successMessageRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+    
+    if (formStatus === 'error' && errorMessageRef.current) {
+      // Rolagem suave até a mensagem de erro
+      errorMessageRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }, [formStatus]);
 
   // Fetch form structure from the backend
   useEffect(() => {
@@ -229,7 +252,7 @@ const ContactForm: React.FC = () => {
         </p>
 
         {formStatus === 'success' && (
-          <div className="form-success-message">
+          <div className="form-success-message" ref={successMessageRef}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -247,7 +270,7 @@ const ContactForm: React.FC = () => {
         )}
 
         {formStatus === 'error' && (
-          <div className="form-error-message">
+          <div className="form-error-message" ref={errorMessageRef}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -375,4 +398,3 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
-

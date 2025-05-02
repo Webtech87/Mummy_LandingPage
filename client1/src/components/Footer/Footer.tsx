@@ -127,10 +127,10 @@ const Footer: React.FC = () => {
             <div className="footer-bottom">
                 <div className="footer-container">
                     <p className="copyright">
-                        © {new Date().getFullYear()} <span className="highlight">SANTICLINIC</span>. {t("footer.footer_btn.0")}
+                        © {new Date().getFullYear()} <span className="highlight">SANTICLINIC</span>. {t("footer_btn.0")}
                     </p>
                     <p className="developer-credit">
-                        {t("footer_btn.1")} ❤️ {t("footer_btn.2")} <a href="#" target="_blank" rel="noopener noreferrer">{t("footer_btn.3")}
+                        {t("footer_btn.1")} ❤️ {t("footer_btn.2")} <a href="#" target="_blank" rel="noopener noreferrer">
                         SantiClinic</a>
                     </p>
                 </div>

@@ -403,5 +403,42 @@
         "p": "If you have any questions about these Terms and Conditions, please contact us:"
       }
     }
+  },
+  "cookies": {
+    "top_btn": {
+      "more": "See more",
+      "less": "See less"
+    },
+    "title": "We use cookies",
+    "p": "We use cookies and similar technologies to enhance your experience on our website, personalize advertising, and recommend content that may interest you.",
+    "lt": {
+      "p": {
+        "text": "By continuing to browse, you agree to our",
+        "link": "Privacy Policy"
+      },
+      "1": {
+        "bold": "Essential cookies",
+        "p": "Necessary for the website to function"
+      },
+      "2": {
+        "bold": "Analytical cookies",
+        "p": "Help us understand how you use the site"
+      },
+      "3": {
+        "bold": "Marketing cookies",
+        "p": "Allow us to offer personalized content"
+      }
+    },
+    "btn": {
+      "accept": "Accept",
+      "reject": "Reject"
+    }
+  },
+  "empty_fields": {
+    "name": "The name field is required.",
+    "phone": "The phone field is required.",
+    "email": "Please enter a valid email.",
+    "subject": "The subject field is required.",
+    "acepted": "You must accept the Privacy Policy."
   }
 }

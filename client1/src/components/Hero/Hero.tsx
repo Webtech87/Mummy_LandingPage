@@ -206,7 +206,7 @@ export default function Hero() {
               <span className="offer-price-value">
                 {currentPrice}
               </span>
-              <span className="offer-price-savings">Economize {calculateSavings()}!</span>
+              <span className="offer-price-savings">{t("save")} {calculateSavings()}!</span>
             </div>
 
             <p className="offer-deadline">

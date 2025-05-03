@@ -453,5 +453,6 @@
       "h1": "Payment Successful",
       "p": "Your payment was successfully completed."
     }
-  }
+  },
+  "save": "Save"
 }

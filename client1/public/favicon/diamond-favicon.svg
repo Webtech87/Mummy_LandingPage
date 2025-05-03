@@ -1,0 +1,59 @@
+
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle gradient background -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f9f9f9" />
+      <stop offset="100%" stop-color="#e6e6e6" />
+    </linearGradient>
+    
+    <!-- Diamond facet gradient -->
+    <linearGradient id="diamond-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ab7ff" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#7c6efa" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Sparkle filter -->
+    <filter id="sparkle" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="sparkle" />
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="256" cy="256" r="256" fill="url(#bg-gradient)"/>
+  
+  <!-- Diamond structure with improved details - moved up slightly to make space for text -->
+  <g transform="translate(256, 226)">
+    <!-- Outer Diamond with elegant proportions -->
+    <path d="M0 -130L130 0L0 130L-130 0Z" stroke="#333333" stroke-width="8" fill="url(#diamond-gradient)" />
+    
+    <!-- Middle section with refined details -->
+    <path d="M0 -70L70 0L0 70L-70 0Z" stroke="#333333" stroke-width="6" fill="none" />
+    
+    <!-- Inner Diamond with balanced proportions -->
+    <path d="M0 -40L40 0L0 40L-40 0Z" stroke="#333333" stroke-width="5" fill="none" />
+    
+    <!-- Center point with improved visibility -->
+    <circle cx="0" cy="0" r="6" fill="#333333" />
+    
+    <!-- Enhanced shine effects -->
+    <path d="M-70 -70L-40 -40" stroke="#ffffff" stroke-width="3" opacity="0.8" stroke-linecap="round" />
+    <path d="M-55 -55L-35 -35" stroke="#ffffff" stroke-width="2" opacity="0.6" stroke-linecap="round" />
+    
+    <!-- Additional facet lines for dimension -->
+    <path d="M0 -130L0 -70" stroke="#333333" stroke-width="2" opacity="0.4" />
+    <path d="M0 70L0 130" stroke="#333333" stroke-width="2" opacity="0.4" />
+    <path d="M-130 0L-70 0" stroke="#333333" stroke-width="2" opacity="0.4" />
+    <path d="M70 0L130 0" stroke="#333333" stroke-width="2" opacity="0.4" />
+    
+    <!-- Sparkle accents -->
+    <circle cx="-90" cy="-90" r="4" fill="white" filter="url(#sparkle)" />
+    <circle cx="80" cy="-60" r="3" fill="white" filter="url(#sparkle)" />
+    <circle cx="60" cy="90" r="2.5" fill="white" filter="url(#sparkle)" />
+  </g>
+  
+  <!-- Added Santiclinic text below the diamond -->
+  <text x="256" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#333333">Santiclinic</text>
+</svg>

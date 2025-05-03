@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #A38200;
   --primary-light: #FFFAE5;
@@ -7,12 +8,15 @@
   --section-padding: 5rem 2rem;
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --gradient-gold: linear-gradient(135deg, #A38200, #FFC700);
+  --price-gradient: linear-gradient(145deg, #16a34a, #22c55e);
+  --price-shadow: 0 8px 20px rgba(22, 163, 74, 0.15), 0 2px 6px rgba(22, 163, 74, 0.1);
 }
 
 .service-section {
   padding: var(--section-padding);
   background-color: #fff;
 }
+
 
 .service-container {
   max-width: 1000px;
@@ -115,44 +119,102 @@
   right: 0;
   height: 8px;
   background: var(--gradient-gold);
+  border-radius: 2px;
 }
 
-.offer-icon {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+/* Limited Spots banner - removing lines */
+.limited-spots-banner {
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.limited-spots-banner span {
+  display: inline-block;
+  font-weight: 700;
   color: var(--highlight-color);
+  font-size: 1.2rem;
+  padding: 0.5rem 2.5rem;
+  position: relative;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(163, 130, 0, 0.1);
 }
 
+/* Enhanced Special Price Section */
 .special-price {
-  margin-bottom: 1.5rem;
-  background: white;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 0.5rem auto 1.5rem;
+  background: var(--price-gradient);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--price-shadow);
   min-width: 75%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  max-width: 90%;
+}
+
+.special-price:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.2), 0 3px 8px rgba(22, 163, 74, 0.12);
 }
 
 .special-price p {
   margin: 0.5rem 0;
   font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
 }
 
+/* Price icon styling */
+.price-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Enhanced Price Styling */
 .price {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
   margin-left: 0.5rem;
+  position: relative;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Add savings badge to highlight the discount */
+.special-price::before {
+  content: attr(data-savings);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--gradient-gold);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: 0 16px 0 12px;
+  box-shadow: -2px 2px 6px rgba(163, 130, 0, 0.15);
 }
 
 .limited-time {
   font-size: 0.9rem !important;
-  font-weight: 500;
-  opacity: 0.8;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-top: 0.8rem !important;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
 /* Countdown Container */
@@ -383,6 +445,46 @@
   transform: translateY(-1px);
 }
 
+/* Loading state for button */
+.buy-button.loading {
+  background: var(--primary-color);
+  opacity: 0.9;
+  cursor: wait;
+}
+
+/* Button loader animation */
+.button-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .service-grid {
@@ -416,12 +518,16 @@
   }
   
   .special-price {
-    padding: 1rem;
-    min-width: 90%;
+    padding: 1.2rem 1rem;
   }
   
   .price {
     font-size: 1.8rem;
+  }
+  
+  .special-price::before {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.8rem;
   }
   
   .timer-number {
@@ -440,6 +546,11 @@
   
   .countdown-container {
     padding: 1.2rem 1rem;
+  }
+  
+  .limited-spots-banner span {
+    font-size: 1.1rem;
+    padding: 0.4rem 2rem;
   }
 }
 
@@ -480,11 +591,11 @@
   }
   
   .special-price {
-    padding: 0.8rem;
+    padding: 1rem 0.8rem;
   }
   
   .price {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   .promo-price {
@@ -494,6 +605,12 @@
   .buy-button {
     padding: 1rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  .limited-spots-banner span {
+    font-size: 1rem;
+    padding: 0.4rem 1.5rem;
+    width: auto;
   }
 }
 
@@ -519,10 +636,10 @@
   }
   
   .price {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+  }
+  
+  .limited-spots-banner span {
+    width: 100%;
   }
 }
-
-
-
-

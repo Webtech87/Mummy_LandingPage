@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/components/service-section.css';
 import { useTranslation } from 'react-i18next';
+import { CircleDollarSign } from 'lucide-react';
 
 interface ServiceBoxProps {
   title: string;
@@ -93,6 +95,12 @@ const ServiceSection: React.FC = () => {
       
       // Redirecionar para a página de pagamento cancelado
       navigate('/payment-canceled');
+    } else if (paymentStatus === 'success' && localStorage.getItem('paymentStarted')) {
+      // Limpar o estado de pagamento
+      localStorage.removeItem('paymentStarted');
+      
+      // Redirecionar para a página de pagamento bem-sucedido
+      navigate('/payment-success');
     }
   }, [navigate]);
 
@@ -166,6 +174,18 @@ const ServiceSection: React.FC = () => {
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
 
+  // Calculate savings amount (for display purposes)
+  const calculateSavings = () => {
+    // Remove currency symbol and extract numbers
+    const currentPriceValue = parseInt(currentPrice.replace(/[^0-9]/g, ''));
+    const nextPriceValue = parseInt(nextPrice.replace(/[^0-9]/g, ''));
+    const savings = nextPriceValue - currentPriceValue;
+    return `${savings}€`;
+  };
+
+  const savingsAmount = calculateSavings();
+  const savingsText = `- ${savingsAmount}`;
+
   return (
     <section className="service-section">
       <div className="service-container">
@@ -200,17 +220,16 @@ const ServiceSection: React.FC = () => {
         </div>
 
         <div className="offer-card">
-          <div className="offer-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#A38200"/>
-            </svg>
+          <div className="limited-spots-banner">
             <span>{t("bot_ptomotion.p")}</span>
           </div>
 
-          <div className="special-price">
-            <p>{t("bot_ptomotion.price_esp")}: <span className="price">
-              {currentPrice}
-            </span></p>
+          <div className="special-price" data-savings={savingsText}>
+            <p>
+              <CircleDollarSign className="price-icon" size={24} />
+              {t("bot_ptomotion.price_esp")}: 
+              <span className="price">{currentPrice}</span>
+            </p>
             <p className="limited-time">
               {isFirstPhase 
                 ? t("bot_ptomotion.validation.0")

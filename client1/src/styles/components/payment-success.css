@@ -1,0 +1,73 @@
+.payment-success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .payment-success-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  
+  .payment-icon {
+    margin-bottom: 20px;
+  }
+  
+  .payment-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .payment-message {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .payment-options {
+    margin-bottom: 30px;
+  }
+  
+  .primary-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .primary-button:hover {
+    background-color: #388e3c;
+  }
+  
+  .payment-help {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .contact-link {
+    display: block;
+    margin-top: 5px;
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .contact-link:hover {
+    text-decoration: underline;
+  }

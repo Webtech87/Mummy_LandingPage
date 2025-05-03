@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import "../../styles/components/payment-canceled.css";
+import "../../styles/components/payment-success.css";
 
-const PaymentCanceled = () => {
+const PaymentSuccess = () => {
   const navigate = useNavigate();
-  const { t , i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   
   useEffect(() => {
-    // Certifique-se de que o idioma português seja usado como padrão se nenhum idioma estiver definido
+    // Ensure Portuguese is used as default if no language is defined
     if (i18n.language !== 'pt' && i18n.language !== 'en') {
       i18n.changeLanguage('pt');
     }
     
-    // Verifique se há um idioma salvo no localStorage
+    // Check if there's a language saved in localStorage
     const savedLanguage = localStorage.getItem("i18nextLng");
     if (savedLanguage && i18n.language !== savedLanguage) {
       i18n.changeLanguage(savedLanguage);
@@ -21,20 +21,19 @@ const PaymentCanceled = () => {
   }, [i18n]);
   
   return (
-    <div className="payment-canceled-container">
-      <div className="payment-canceled-card">
+    <div className="payment-success-container">
+      <div className="payment-success-card">
         <div className="payment-icon">
           <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FF6B6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M15 9L9 15" stroke="#FF6B6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M9 9L15 15" stroke="#FF6B6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9 12L11 14L15 10" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
         
-        <h1 className="payment-title">{t('payment.cancel.h1')}</h1>
+        <h1 className="payment-title">{t('payment.success.h1')}</h1>
         
         <p className="payment-message">
-          {t('payment.cancel.p')}
+          {t('payment.success.p')}
         </p>
         
         <div className="payment-options">
@@ -43,13 +42,6 @@ const PaymentCanceled = () => {
             onClick={() => navigate('/')}
           >
             {t('payment.top_button')}
-          </button>
-          
-          <button 
-            className="secondary-button"
-            onClick={() => window.location.href = 'https://mummy-landingpage.onrender.com/api/v1/payment/process/'}
-          >
-            {t('payment.boton_button')}
           </button>
         </div>
         
@@ -66,4 +58,4 @@ const PaymentCanceled = () => {
   );
 };
 
-export default PaymentCanceled;
+export default PaymentSuccess;

@@ -441,10 +441,17 @@
     "acepted": "Você deve aceitar a Política de Privacidade."
   },
   "payment": {
-    "h1": "Pagamento Cancelado",
-    "p": "O seu pagamento foi cancelado. Não se preocupe, nenhum valor foi cobrado.",
     "top_button": "Voltar para pagina inicial",
     "boton_button": "Tentar novamente",
-    "contact_us": "Precisa de ajuda? Entre em contato conosco:"
-  }
+    "contact_us": "Precisa de ajuda? Entre em contato conosco:",
+    "cancel": {
+      "h1": "Pagamento Cancelado",
+      "p": "O seu pagamento foi cancelado. Não se preocupe, nenhum valor foi cobrado."
+    },
+    "success": {
+      "h1": "Pagamento efectuado com successo",
+      "p": "O seu pagamento foi efectuado com successo."
+    }
+  },
+  "save": "Economiza"
 }

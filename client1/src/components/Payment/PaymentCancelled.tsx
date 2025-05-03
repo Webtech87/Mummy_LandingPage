@@ -31,10 +31,10 @@ const PaymentCanceled = () => {
           </svg>
         </div>
         
-        <h1 className="payment-title">{t('payment.h1')}</h1>
+        <h1 className="payment-title">{t('payment.cancel.h1')}</h1>
         
         <p className="payment-message">
-          {t('payment.p')}
+          {t('payment.cancel.p')}
         </p>
         
         <div className="payment-options">

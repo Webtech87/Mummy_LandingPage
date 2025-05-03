@@ -119,15 +119,15 @@ def process(request):
 
 
 def payment_completed(request):
-    # Redirecionar para o frontend com parâmetro de status
-    frontend_url = "http://localhost:5173"  # Ajuste para sua URL do frontend em produção
-    return redirect(f"{frontend_url}/?status=success")
+    # Redirect to the frontend with status=success
+    frontend_url = "http://localhost:5173"  # Adjust for your frontend URL in production
+    return redirect(f"{frontend_url}/payment-success")
 
 
 def payment_canceled(request):
-    # Redirecionar para o frontend com parâmetro de status
-    frontend_url = "http://localhost:5173"  # Ajuste para sua URL do frontend em produção
-    return redirect(f"{frontend_url}/?status=canceled")
+    # Redirect to the frontend with status=canceled
+    frontend_url = "http://localhost:5173"  # Adjust for your frontend URL in production
+    return redirect(f"{frontend_url}/payment-canceled")
 
 
 @csrf_exempt

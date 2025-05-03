@@ -1,9 +1,11 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/components/hero.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
+import { CircleDollarSign } from "lucide-react";
 
 // Interface for the price information from the backend
 interface PriceInfo {
@@ -155,6 +157,15 @@ export default function Hero() {
     ? serverPriceInfo.is_first_phase 
     : targetInfo.isFirstPhase;
 
+  // Calculate savings amount (for display purposes)
+  const calculateSavings = () => {
+    // Remove currency symbol and extract numbers
+    const currentPriceValue = parseInt(currentPrice.replace(/[^0-9]/g, ''));
+    const nextPriceValue = parseInt(nextPrice.replace(/[^0-9]/g, ''));
+    const savings = nextPriceValue - currentPriceValue;
+    return `${savings}€`;
+  };
+
   return (
     <section className="hero-section" aria-labelledby="main-heading">
       <div className="hero-container">
@@ -190,11 +201,12 @@ export default function Hero() {
               <span className="offer-title">{t("top_ptomotion.title")}</span>
             </div>
 
-            <div className="offer-price-container">
+            <div className="offer-price-container" aria-label="Preço promocional">
               <span className="offer-price-label">{t("top_ptomotion.prom_price")}:</span>
               <span className="offer-price-value">
                 {currentPrice}
               </span>
+              <span className="offer-price-savings">Economize {calculateSavings()}!</span>
             </div>
 
             <p className="offer-deadline">

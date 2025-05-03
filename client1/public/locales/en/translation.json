@@ -442,10 +442,16 @@
     "acepted": "You must accept the Privacy Policy."
   },
   "payment": {
-    "h1": "Payment Canceled",
-    "p": "Your payment was canceled. Don't worry, no amount was charged.",
-    "top_button": "Return to homepage",
+    "top_button": "Back to homepage",
     "boton_button": "Try again",
-    "contact_us": "Need help? Contact us:"
+    "contact_us": "Need help? Contact us:",
+    "cancel": {
+      "h1": "Payment Cancelled",
+      "p": "Your payment was cancelled. Don't worry, no charges were made."
+    },
+    "success": {
+      "h1": "Payment Successful",
+      "p": "Your payment was successfully completed."
+    }
   }
 }

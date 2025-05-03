@@ -30,10 +30,10 @@ const PaymentSuccess = () => {
           </svg>
         </div>
         
-        <h1 className="payment-title">{t('payment_success.h1')}</h1>
+        <h1 className="payment-title">{t('payment.success.h1')}</h1>
         
         <p className="payment-message">
-          {t('payment_success.p')}
+          {t('payment.success.p')}
         </p>
         
         <div className="payment-options">
@@ -41,13 +41,13 @@ const PaymentSuccess = () => {
             className="primary-button"
             onClick={() => navigate('/')}
           >
-            {t('payment_success.home_button')}
+            {t('payment.top_button')}
           </button>
         </div>
         
         <div className="payment-help">
           <p>
-            {t('payment_success.contact_us')}
+            {t('payment.contact_us')}
           </p>
           <a href="mailto:geral@santiclinic.eu" className="contact-link">
             geral@santiclinic.eu

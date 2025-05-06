@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/components/hero.css";
@@ -147,7 +146,7 @@ export default function Hero() {
     localStorage.setItem('paymentStarted', 'true');
     
     // Redirect to the payment processing URL
-    window.location.href = 'http://localhost:8000/api/v1/payment/process/';
+    window.location.href = 'http://localhost:8000/api/v1/payment/api/process/';
   }
 
   // Use server prices if available, otherwise use local calculations
@@ -243,7 +242,7 @@ export default function Hero() {
                 </>
               ) : (
                 <>
-                  <p className="warning-title">{t("top_ptomotion.atention")}</p>
+                  <p className="warning-title">{t("top_ptomotion.atention.1.0")}</p>
                   <p className="warning-period">{t("top_ptomotion.atention.1.1")}</p>
                   <span className="regular-price">{nextPrice}</span>
                 </>

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/components/hero.css";
@@ -233,7 +232,7 @@ export default function Hero() {
                 </>
               ) : (
                 <>
-                  <p className="warning-title">{t("top_ptomotion.atention")}</p>
+                  <p className="warning-title">{t("top_ptomotion.atention.1.0")}</p>
                   <p className="warning-period">{t("top_ptomotion.atention.1.1")}</p>
                   <span className="regular-price">{nextPrice}</span>
                 </>
